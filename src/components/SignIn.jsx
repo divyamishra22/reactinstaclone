@@ -2,7 +2,8 @@ import React from 'react'
 
 const SignIn = () => {
   return (
-    <div>
+    <div className='class1'>
+        <p>Sign in to to view </p>
       
     </div>
   )

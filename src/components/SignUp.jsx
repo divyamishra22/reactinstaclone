@@ -2,8 +2,8 @@ import React from 'react'
 
 const SignUp = () => {
   return (
-    <div>
-      
+    <div className='class1'>
+     <p> Sign in to view like follow your friends</p> 
     </div>
   )
 }

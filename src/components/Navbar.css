@@ -2,6 +2,7 @@
     display: flex;
     margin-top:0;
     box-shadow: 1px 5px 5px #e0dcdc;
+    background-color: rgba(128, 128, 128, 0.078);
 }
 
 .nav-menu{
@@ -11,4 +12,6 @@
 li{
     list-style: none;
     padding: 1px 15px;
+    color: black;
+    font-weight: 200;
 }
