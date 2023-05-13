@@ -1,0 +1,56 @@
+
+/* .signin{
+    border: 2px solid rgba(128, 128, 128, 0.179);
+    background-color: rgba(128, 128, 128, 0.095);
+} */
+
+.loginform{
+     border: 2px solid rgba(128, 128, 128, 0.179);
+    background-color: rgba(128, 128, 128, 0.095); 
+    border-radius: 5px;
+    position:absolute;
+    top: 20%;
+    left: 40%;
+    padding: 30px;
+    width: 200px;
+    height: 150px;
+    /* align-items: center; */
+}
+
+input{
+    padding: 5px;
+    /* margin: 200px 3px; */
+    font-size: 16px;
+    width: 100%;
+   box-sizing: border-box; 
+}
+
+#login-btn{
+    background-color: rgba(0, 0, 255, 0.429);
+    border-radius: 10px;
+    color: white;
+     margin-top: 28px; 
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+}
+
+.loginform2{
+    background-color: #fff;
+    padding: 30px;
+    width: 200px;
+    border: 1px solid rgba(128, 128, 128, 0.232) ;
+    border-radius: 5px;
+    margin-top: 320px;
+    position: absolute;
+    left: 40%;
+    height: 30px;
+    /* align-items: center; */
+}
+
+
+span{
+    color: rgba(0, 0, 255, 0.353);
+
+}
