@@ -13,7 +13,7 @@ const Home = () => {
       <img  src="./picture2.jpg"/>
     </div>
     <div className='card-content'>
-    <i class="fa-regular fa-heart"></i>
+    <i className="fa-regular fa-heart"></i>
     </div>
     {/* <i class="fa-light fa-face-smile"></i> */}
     <div className='add-comment'>
