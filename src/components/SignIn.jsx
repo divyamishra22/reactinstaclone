@@ -39,6 +39,8 @@ const getMyPostData = async () => {
     }
     else{
       alert("SignedIn Successfully")
+       localStorage.setItem("jwt", res.data)
+      // localStorage.setItem("user", JSON.stringify(res.user))
     }
   } catch (error) {
     setIsError(error);
