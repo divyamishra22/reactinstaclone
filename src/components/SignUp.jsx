@@ -1,13 +1,13 @@
 import React,{ useState } from 'react'
 import './SignUp.css'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
 const SignUp = () => {
   // const navigate = useNavigate()
   // const [name, setName] = useState("");
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
-   const [myData, setMyData] = useState([]);
+  //  const [myData, setMyData] = useState([]);
    const [isError, setIsError] = useState("");
 
    const handleSubmit = (e) => {
@@ -23,42 +23,42 @@ const SignUp = () => {
 };
 
   
-  const getMyPostData =  () => {
-    // try {
-    //   const res = await axios.post("http://localhost:3000/user/signup",{
-    //     // email:email,
-    //     password: password,
-    //     email:email,
+  const getMyPostData = async () => {
+    try {
+      const res = await axios.post("http://localhost:3000/user/signup",{
+
+        password: password,
+        email:email,
        
-    //   })
-    //   // const res = await axios.get("https://api.coindesk.com/v1/bpi/currentprice.json");
-    //   // setMyData(res.data);
-    //   alert("sucessfully signed");
-    //   console.log(res);
-    // } catch (error) {
-    //   setIsError(error);
-    // }
-
-    fetch("http://localhost:3000/user/signup", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password
-
       })
-    }).then(res => res.json())
-       .then(data => {
-      // //   if (data.error) {
-      // //     notifyA(data.error)
-      // //   } else {
-      // //     notifyB(data.message)
-      // //     navigate("/signin")
-      // //   }
-         console.log(data)
-       })
+     
+      // setMyData(res.data);
+      alert("sucessfully signed");
+      console.log(res);
+    } catch (error) {
+      setIsError(error);
+    }
+
+    // fetch("http://localhost:3000/user/signup", {
+    //   method: "post",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     email: email,
+    //     password: password
+
+    //   })
+    // }).then(res => res.json())
+    //    .then(data => {
+    //   // //   if (data.error) {
+    //   // //     notifyA(data.error)
+    //   // //   } else {
+    //   // //     notifyB(data.message)
+    //   // //     navigate("/signin")
+    //   // //   }
+    //      console.log(data)
+    //    })
   };
   return (
     <>
