@@ -66,9 +66,9 @@ const SignUp = () => {
     <form className='signup'>
     {/* <div className='form'> */}
      <p> Sign In to view like follow your friends</p> 
-    {/* <div className='form0'>
+    <div className='form0'>
       <input type= "text" name="username" id="username" placeholder="Name"/>
-    </div> */}
+    </div>
     <div className='form1'>
       <input type= "email" name=" email" id="email" value={email} placeholder="Email"
        onChange={(e) => { setemail(e.target.value) }}/>
