@@ -4,25 +4,7 @@ import './Profile.css';
 const Profile = ({img,username,name,}) => {
 
   const { username } = useParams();z
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    // if (!token) {
-    //   navigate("./signup");
-    // }
-      
-      fetch(`http://localhost:3000/user/viewprofile/${username}`, {
-        method: "get",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-          setData(result);
-        })
-        .catch((err) => console.log(err));
-    }, []);
+  
 
 
   return (
@@ -39,27 +21,32 @@ const Profile = ({img,username,name,}) => {
         </div>
         {/* profile-data */}
         <div className="profile-data">
-          <h1>{name}</h1>
+        <div>
+        <h1>{username}</h1>
+        <h1>{name}</h1>
+      </div>
+          
           <button
-              className="followBtn"
-              onClick={() => {
-                if (isFollow) {
-                  unfollowUser(user.id);
-                } else {
-                  followUser(user.id);
-                }
-              }}
+              className="ViewProfileBtn"
+              // onClick={() => {
+              //   if (isFollow) {
+              //     unfollowUser(user.id);
+              //   } else {
+              //     followUser(user.id);
+              //   }
+              // }}
             >
-              {isFollow ? "Unfollow" : "Follow"}
+              {/* {isFollow ? "Unfollow" : "Follow"} */}
+              ViewProfile
             </button>
-        <div className='profile-info' style={{display: 'flex', justifyContent: 'space-between'}}>
+        {/* <div className='profile-info' style={{display: 'flex', justifyContent: 'space-between'}}>
           <p>40posts</p>
           <p>40 followers</p>
           <p>40 following</p>
-        </div>
+        </div> */}
         </div>
       </div>
-      <hr style={{ width: "90%", opacity: "0.8",margin: "25px auto",}}/>
+      {/* <hr style={{ width: "90%", opacity: "0.8",margin: "25px auto",}}/> */}
       {/* gallery */}
       {/* <div  className='gallery'>
       <img src='picture1.jpg'/>
