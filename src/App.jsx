@@ -9,6 +9,8 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import CreatePost from './components/CreatePost'
+import Searchbar from './components/Searchbar'
+import { SearchProvider } from './hooks/GetSearch'
 
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter>
+   <BrowserRouter>
     <Navbar/>
      <Routes>
       <Route path="/" element={<Home/>}></Route>
@@ -25,6 +27,7 @@ function App() {
       <Route path="/Profile" element={<Profile/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
+      <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
        </BrowserRouter>
 
