@@ -26,6 +26,10 @@ const Navbar = () => {
       <li>CreatePost</li>
       </Link>
 
+      <Link to="/Search">
+        <li>Search</li>
+      </Link>
+
      </ul>
     </div>
     </>
