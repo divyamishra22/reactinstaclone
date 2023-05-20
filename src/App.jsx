@@ -10,7 +10,7 @@ import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import CreatePost from './components/CreatePost'
 import Searchbar from './components/Searchbar'
-import { SearchProvider } from './hooks/GetSearch'
+
 
 
 function App() {
