@@ -1,10 +1,10 @@
 
 import React,{useState} from 'react';
-
+import Profile from './Profile';
 
 const Searchbar = () => {
     const [term, setTerm] = useState('');
-    // const [users, setUsers] = useState([]);
+     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
@@ -32,7 +32,7 @@ const Searchbar = () => {
           .then((res) => res.json())
             .then((result) => {
               console.log(result);
-            //   setUsers(result);
+               setUsers(result);
             })
           }
         }
@@ -45,11 +45,23 @@ const Searchbar = () => {
 
   return (
     <div className='searchclass'>
-        <div className='searchinput'>
 
+        <div className='searchinput'>
         <input type="text" name="searchtext" id="searchtext" value={term} placeholder='Serach by Username..Name'
            onChange={(e) => { setTerm(e.target.value) }}/>
          <button type="submit" id="submit-btn" onClick={handleSubmit}>Search</button>
+        </div>
+
+        <div className='profile'>
+        {users.length > 0 ? (
+            users.map((user) => (
+        <Profile 
+                // img={user.avatar}
+                username={user.username}
+                name={user.name}/>
+            ))): (
+            <p>No Results </p>
+            )}
         </div>
         
     </div>
