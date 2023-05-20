@@ -1,6 +1,6 @@
 import React from 'react';
 import './Profile.css';
-
+import { Link } from 'react-router-dom'
 
 
 const profile = ({username,name,}) => {
@@ -20,7 +20,9 @@ const profile = ({username,name,}) => {
         {/* profile-data */}
         <div className="profile-data">
         <div>
+        <Link to={`/profile/${username}`}>
         <h1>{username}</h1>
+        </Link>
         <h1>{name}</h1>
       </div>
 
