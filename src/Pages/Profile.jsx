@@ -15,7 +15,7 @@ const Profile = () => {
     // const getProfile = () => {
         try{
             // setLoading(true);
-            fetch(`http://localhost:3000/user/viewprofile/${raha_K}`, {
+            fetch(`http://localhost:3000/user/viewprofile/${username}`, {
             method: "get",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("jwt"),

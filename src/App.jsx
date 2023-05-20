@@ -7,7 +7,8 @@ import Home from './components/Home'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import Profile from './components/Profile'
+// import Profile from './components/Profile'
+import Profile from './Pages/Profile';
 import CreatePost from './components/CreatePost'
 import Searchbar from './components/Searchbar'
 
@@ -24,12 +25,12 @@ function App() {
       <Route path="/" element={<Home/>}></Route>
       <Route path="/SignIn" element={<SignIn/>}></Route>
       <Route path="/SignUp" element={<SignUp/>}></Route>
-      <Route path="/Profile" element={<Profile/>}></Route>
+      <Route path="/profile/:username" element={<Profile/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
-       </BrowserRouter>
+      </BrowserRouter>
 
     </>
   )
