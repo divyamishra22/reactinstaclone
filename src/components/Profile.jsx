@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
 import './Profile.css';
-const Profile = ({img,username,name,}) => {
 
-  const { username } = useParams();z
-  
 
+
+const Profile = ({username,name,}) => {
+
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    
+  }
 
   return (
        <div className="profile">
@@ -13,11 +16,11 @@ const Profile = ({img,username,name,}) => {
       <div className="profile-frame">
         {/* profile-pic */}
         <div className="profile-pic">
-        {img ? (
+        {/* {img ? (
           <img src={`${img}`}/>
-        ) : (
+        ) : ( */}
           <img src='picture1.jpg'/>
-        )}
+        {/* )} */}
         </div>
         {/* profile-data */}
         <div className="profile-data">
@@ -27,7 +30,7 @@ const Profile = ({img,username,name,}) => {
       </div>
           
           <button
-              className="ViewProfileBtn"
+              className="ViewProfileBtn" onClick={handleSubmit}
               // onClick={() => {
               //   if (isFollow) {
               //     unfollowUser(user.id);
