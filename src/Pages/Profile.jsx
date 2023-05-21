@@ -16,8 +16,18 @@ const Profile = () => {
    
     useEffect(() => {
       async function getProfile() {
-        const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`);
-        console.log(res.data);
+        // const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`);
+        // console.log(res.data);
+        fetch(`http://localhost:3000/user/viewprofile/${username}`, {
+          method: "get",
+          headers: {
+            // "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("jwt")
+          },
+          })
+        .then(res => res.json())
+          .then(data => {
+           console.log(data)
         const {
           isFollow: _isFollow,
           isProfile: _isProfile,
@@ -25,7 +35,8 @@ const Profile = () => {
           userFollowingCount,
           userPostsCount,
           user: _user,
-        } = res.data;
+        } = data;
+      // })
         setIsFollow(_isFollow);
         setCount({
           userFollowersCount,
@@ -35,6 +46,7 @@ const Profile = () => {
         setIsProfile(_isProfile);
         setUser(_user);
         // setPhotos(_user.photos);
+      })
       }
       getProfile();
     }, [username]);
@@ -67,7 +79,7 @@ const Profile = () => {
             <div className='profile-info'>
             <p>{count.userPostsCount} posts</p>
             <p>{count.userFollowersCount} followers</p>
-            <p>{count.userFollowsCount} following</p>
+            <p>{count.userFollowingCount} following</p>
             </div>
         </div>
       
