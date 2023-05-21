@@ -72,13 +72,31 @@ const Profile = () => {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
       body: JSON.stringify({
-        id: user.id,
+        userid: user.id,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setIsFollow(true);
+      });
+  };
+
+
+  const unfollowUser = () => {
+    fetch(`http://localhost:3000/follow/${user.id}`, {
+      method: "post",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        id: user.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setIsFollow(false);
       });
   };
 
@@ -96,7 +114,7 @@ const Profile = () => {
                 <button type='submit' id='editbtn'>Edit Profile</button>
             //   </Link>
             ) : isFollow ? (
-              <button onClick={() => unfollowUser}>Unfollow</button>
+              <button onClick={unfollowUser}>Unfollow</button>
             ) : (
               <button onClick={followUser}>Follow</button>
                 )}
