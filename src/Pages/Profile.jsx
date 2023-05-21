@@ -28,15 +28,22 @@ const Profile = () => {
         .then(res => res.json())
           .then(data => {
            console.log(data)
-        const {
-          isFollow: _isFollow,
-          isProfile: _isProfile,
-          userFollowersCount,
-          userFollowingCount,
-          userPostsCount,
-          user: _user,
-        } = data;
-      // })
+        // const {
+        //   isFollow: _isFollow,
+        //   isProfile: _isProfile,
+        //   userFollowersCount,
+        //   userFollowingCount,
+        //   userPostsCount,
+        //   user: _user,
+        // } = data;
+
+       const _isFollow=  data.isFollow
+       const  _isProfile =  data.isProfile
+       const userFollowersCount=  data. userFollowersCount
+       const userFollowingCount=  data.userFollowingCount
+       const userPostsCount =  data.userPostsCount
+       const  _user =  data.user
+      
         setIsFollow(_isFollow);
         setCount({
           userFollowersCount,
