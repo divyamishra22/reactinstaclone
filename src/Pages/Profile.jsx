@@ -2,7 +2,7 @@ import React, { useEffect, useState , useMemo} from 'react'
 import {
     //  Link,
      useParams } from 'react-router-dom';
-     import api from '../api/index1';
+    //  import api from '../api/index1';
 
 const Profile = () => {
     const { username } = useParams();
@@ -62,7 +62,25 @@ const Profile = () => {
 
     if (loadingMemo) {
       return <p>Loading..</p>;
-    }    
+    }   
+  
+      
+  const followUser = () => {
+    fetch(`http://localhost:3000/follow/${user.id}`, {
+      method: "post",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        id: user.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setIsFollow(true);
+      });
+  };
 
   return (
     <div className='profile'>
@@ -73,15 +91,15 @@ const Profile = () => {
             </div>
             <div className='profile-data'>
             <h1>{user.name}</h1>
-            {/* {isProfile ? (
+            {isProfile ? (
             //   <Link to={`/edit/${username}`}>
                 <button type='submit' id='editbtn'>Edit Profile</button>
             //   </Link>
             ) : isFollow ? (
-              <button onClick={() => handleFollowButton(user.id)}></button>
+              <button onClick={() => unfollowUser}>Unfollow</button>
             ) : (
-              <button onClick={() => handleFollowButton(user.id)}></button>
-                )} */}
+              <button onClick={followUser}>Follow</button>
+                )}
             </div>
             <div className='profile-info'>
             <p>{count.userPostsCount} posts</p>
