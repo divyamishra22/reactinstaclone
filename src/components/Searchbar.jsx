@@ -57,6 +57,7 @@ const Searchbar = () => {
             users.map((user) => (
         <Profile 
                 // img={user.avatar}
+                key={user.id}
                 username={user.username}
                 name={user.name}/>
             ))): (

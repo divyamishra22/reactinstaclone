@@ -5,25 +5,25 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [name, setname] = useState(" ");
 
-  useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    // if (!token) {
-    //   navigate("./signup");
-    // }
-      // Fetching all posts
-      fetch("http://localhost:3000/user/allusers", {
-        method: "get",
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-          setData(result);
-        })
-        .catch((err) => console.log(err));
-    }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt");
+  //   // if (!token) {
+  //   //   navigate("./signup");
+  //   // }
+  //     // Fetching all posts
+  //     fetch("http://localhost:3000/user/allusers", {
+  //       method: "get",
+  //       headers: {
+  //         Authorization: "Bearer " + localStorage.getItem("jwt"),
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((result) => {
+  //         console.log(result);
+  //         setData(result);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }, []);
 
     // const getuser = (userId) =>{
     //   if(userId)

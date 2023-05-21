@@ -14,7 +14,7 @@ const profile = ({username,name,}) => {
         {/* {img ? (
           <img src={`${img}`}/>
         ) : ( */}
-          <img src='picture1.jpg'/>
+          <img src='picture2.jpg'/>
         {/* )} */}
         </div>
         {/* profile-data */}
