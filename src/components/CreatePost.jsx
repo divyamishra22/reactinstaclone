@@ -1,4 +1,6 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect,
+  //  useMemo
+  } from 'react'
 import './CreatePost.css'
 
 const CreatePost = () => {
@@ -41,6 +43,11 @@ const CreatePost = () => {
 
   }, [url])
 
+  // const loadingMemo = useMemo(() => !(url), [url]);
+
+  // if (loadingMemo) {
+  //   return <p>Loading..</p>;
+  // }   
 
   const postDetails = () => {
 
