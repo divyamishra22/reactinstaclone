@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from  './components/Navbar'
-import Home from './components/Home'
+import Home from './Pages/Home'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'

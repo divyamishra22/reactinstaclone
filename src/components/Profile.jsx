@@ -3,7 +3,7 @@ import './Profile.css';
 import { Link } from 'react-router-dom'
 
 
-const profile = ({username,name,}) => {
+const Profile = ({username,name,}) => {
 
   return (
        <div className="profile">
@@ -33,4 +33,4 @@ const profile = ({username,name,}) => {
   )
 }
 
-export default profile
+export default Profile
