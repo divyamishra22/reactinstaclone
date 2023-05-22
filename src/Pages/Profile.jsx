@@ -42,6 +42,7 @@ const Profile = () => {
        const userFollowersCount=  data. userFollowersCount
        const userFollowingCount=  data.userFollowingCount
        const userPostsCount =  data.userPostsCount
+       const _userPosts = data.userPosts;
        const  _user =  data.user
       
         setIsFollow(_isFollow);
@@ -52,7 +53,7 @@ const Profile = () => {
         });
         setIsProfile(_isProfile);
         setUser(_user);
-        // setPhotos(_user.photos);
+        setPosts(_userPosts);
       })
       }
       getProfile();
@@ -101,27 +102,6 @@ const Profile = () => {
   };
 
 
-  useEffect(() => {
-    fetch(`http://localhost:3000/user/${user.id}/allposts`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        setUser(result.user);
-        setPosts(result.post);
-        // if (
-        //   result.user.followers.includes(
-        //     JSON.parse(localStorage.getItem("user"))._id
-        //   )
-        // ) {
-        //   setIsFollow(true);
-        // }
-      });
-  }, [isFollow]);
-
   return (
     <div className='profile'>
         <div className='profile-frame'>
@@ -159,7 +139,7 @@ const Profile = () => {
          {posts.length > 0 &&
             posts.map((photo) => (
             //   <Link key={photo.id} to={`/photo/${photo.id}`}>
-                <Photo src={``} />
+                <img src={``} />
             //   </Link>
             ))}
       </div>
