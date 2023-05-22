@@ -71,7 +71,7 @@ const CreatePost = () => {
     <div className='createpost'>
       <div className='post-header'>
         <h4 style={{margin: "3px auto"}}> Create a New Post</h4>
-        <button id='Share' onClick={() => { postDetails() }} >Share</button>
+        <button id='Share' onClick={ postDetails() } >Share</button>
       </div>
       <div className='main-div'>
         <input type='file' accept='image/*' onChange={handleChange}
