@@ -50,6 +50,12 @@ const Home = () => {
 
 
   return (
+    <>
+    <div>
+     <Profile key={user.id}
+     username={user.username}
+     name={user.name}/>
+    </div>
     <div>
        {follow && 
             follow.map((follows) => (
@@ -62,6 +68,7 @@ const Home = () => {
            
             )}
     </div>
+    </>
   )
 }
 
