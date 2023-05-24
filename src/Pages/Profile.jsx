@@ -68,7 +68,7 @@ const Profile = () => {
       
   const followUser = () => {
     fetch(`http://localhost:3000/follow/${user.id}`, {
-      method: "post",
+      method: "delete",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
