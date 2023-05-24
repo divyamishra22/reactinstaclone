@@ -1,6 +1,6 @@
 import React, { useEffect, useState , useMemo} from 'react'
 import Profile from '../components/Profile';
-
+import Main from '../components/Main'
 
 const Home = () => {
     
@@ -67,6 +67,10 @@ const Home = () => {
             ) 
            
             )}
+    </div>
+    <div>
+    {feed.length > 0 &&
+              feed.map((feed) => <Main key={feed.posts.id} feed={feed} />)}
     </div>
     </>
   )
