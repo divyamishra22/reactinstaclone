@@ -6,10 +6,40 @@ import Profile from '../components/Profile';
 
 const Main = ({ feed}) => {
 
-  // const [data, setData] = useState([]);
-  const [user, setUser] = useState(" ");
+  const likepost = () =>{
+    fetch(`http://localhost:3000/like/${postid}`, {
+          method: "post",
+          body: JSON.stringify({
+            postid: feed.posts.id,
+          }),
+
+          headers: {
+            // "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("jwt")
+          },
+          })
+        .then(res => res.json())
+          .then(data => {
+           console.log(data)})
+  }
 
 
+
+  const unlikepost = () =>{
+    fetch(`http://localhost:3000/like/${postid}`, {
+          method: "delete",
+          body: JSON.stringify({
+            postid: feed.posts.id,
+          }),
+          headers: {
+            // "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("jwt")
+          },
+          })
+        .then(res => res.json())
+          .then(data => {
+           console.log(data)})
+  }
 
 
   return (
