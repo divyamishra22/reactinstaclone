@@ -4,8 +4,8 @@ import Main from '../components/Main'
 
 const Home = () => {
     
-    const [user,setUser] = useState('');
-    const [follow, setFollow] = useState('');
+    // const [user,setUser] = useState('');
+    const [follow, setFollow] = useState([]);
     const [feed , setFeed]   = useState('');
     
     
@@ -21,6 +21,7 @@ const Home = () => {
         .then(data => {
          console.log(data)
          setFeed(data);
+         
     })
     }
     async function getfollows() {
@@ -34,15 +35,18 @@ const Home = () => {
         .then(res => res.json())
         .then(data => {
          console.log(data)
-         setUser(data.user);
-         setFollow(data.follow);
-    })}
-    getfollows();
+        setFollow(data);
+        
+    })
+}
+    
     getfeed();
+     getfollows();
   }, []);
 
 
-    const loadingMemo = useMemo(() => !(user && user.id), [user]);
+   
+ const loadingMemo = useMemo(() => !(feed), [feed]);
 
     if (loadingMemo) {
       return <p>Loading..</p>;
@@ -52,18 +56,18 @@ const Home = () => {
   return (
     <>
     <div>
-     <Profile key={user.id}
+     {/* <Profile key={user.id}
      username={user.username}
-     name={user.name}/>
+     name={user.name}/> */}
     </div>
     <div>
        {follow && 
             follow.map((follows) => (
         <Profile 
                 // img={user.avatar}
-                key={follows.userToId.id}
-                username={follows.userToId.username}
-                name={follows.userToId.name}/>
+                key={follows.userTo.id}
+                username={follows.userTo.username}
+                name={follows.userTo.name}/>
             ) 
            
             )}
