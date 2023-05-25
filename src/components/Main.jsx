@@ -5,6 +5,8 @@ import Profile from '../components/Profile';
 // import { FiHeart } from 'react-icons/fi';
 
 const Main = ({ feed}) => {
+ let liked = feed.isLiked;
+  const [like, setLike] = useState(liked);
 
   const likepost = () =>{
     fetch(`http://localhost:3000/like/${postid}`, {
@@ -52,12 +54,9 @@ const Main = ({ feed}) => {
          <div className="card-image">
          <img src={feed.posts.image} alt="" />
          <div>
-         <i class="fa-regular fa-heart" size={18}
-            // style={{ color: '#fc4850', marginRight: 10 }}
-
-            >
-         </i>
-         <i class="fa-solid fa-heart"></i>
+        {like? (<i class="fa-solid fa-heart"></i>):
+        (<i class="fa-regular fa-heart" size={18}></i>)
+  }
          </div>
        </div>
     </div>
