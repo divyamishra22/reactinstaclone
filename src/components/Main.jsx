@@ -7,13 +7,15 @@ import Profile from '../components/Profile';
 const Main = ({ feed}) => {
  let liked = feed.isLiked;
   const [like, setLike] = useState(liked);
+  
+  let postid = feed.posts.id;
 
-  const likepost = () =>{
+  async function likepost(){
     fetch(`http://localhost:3000/like/${postid}`, {
           method: "post",
-          body: JSON.stringify({
-            postid: feed.posts.id,
-          }),
+          // body: JSON.stringify({
+          //  postid: feed.posts.id,
+          // }),
 
           headers: {
             // "Content-Type": "application/json",
@@ -30,9 +32,9 @@ const Main = ({ feed}) => {
   const unlikepost = () =>{
     fetch(`http://localhost:3000/like/${postid}`, {
           method: "delete",
-          body: JSON.stringify({
-            postid: feed.posts.id,
-          }),
+          // body: JSON.stringify({
+          //   postid: feed.posts.id,
+          // }),
           headers: {
             // "Content-Type": "application/json",
             "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -54,8 +56,8 @@ const Main = ({ feed}) => {
          <div className="card-image">
          <img src={feed.posts.image} alt="" />
          <div>
-        {like? (<i class="fa-solid fa-heart"></i>):
-        (<i class="fa-regular fa-heart" size={18}></i>)
+        {like? (<i className="fa-solid fa-heart" onClick={unlikepost}></i>):
+        (<i className="fa-regular fa-heart"  onClick={likepost} size={18}></i>)
   }
          </div>
        </div>
