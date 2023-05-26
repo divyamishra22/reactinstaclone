@@ -1,12 +1,10 @@
 import React from 'react'
 import { useFollow } from '../hooks/follow';
-import { FiMoreHorizontal } from 'react-icons/fi';
+// import { FiMoreHorizontal } from 'react-icons/fi';
 
-const Modal = ({isAuthor, post}) => {
+const Modal = ({isAuthor, post, setModalOpen}) => {
 
   const { Unfollow } = useFollow();
-
-  // let postid = post.id;
 
 
   async function UnfollowUser(){
@@ -25,10 +23,14 @@ const Modal = ({isAuthor, post}) => {
            console.log(data)})
   }
 
+  const toggleModal = () => {
+    setModalOpen(false);
+  };
+
 
   return (
     <>
-     <FiMoreHorizontal size={20} />
+     {/* <FiMoreHorizontal size={20}  onClick={() => setModalOpen(true)}/> */}
     <div>
        <div className="darkBg" >
       <div className="centered">
@@ -42,7 +44,7 @@ const Modal = ({isAuthor, post}) => {
             >
               Delete Publication
             </li>
-            <li >Cancel</li>
+            <li  onClick={toggleModal}>Cancel</li>
           </div>):(
           <div className="modalHeader">
           {/* <li>
@@ -53,7 +55,7 @@ const Modal = ({isAuthor, post}) => {
             >
             Unfollow
             </li>
-            <li>Cancel</li>
+            <li  onClick={toggleModal}>Cancel</li>
           </div>)}
     </div>
     </div>
