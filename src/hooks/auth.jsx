@@ -33,3 +33,11 @@ return (
     </AuthContext.Provider>
   );
 }
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('use Auth must be used within a AuthProvider  ');
+  }
+  return context;
+}
