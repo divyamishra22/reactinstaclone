@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useState } from 'react';
+import { createContext, useContext,  useState } from 'react';
 
 const FollowContext = createContext();
 
@@ -6,7 +6,7 @@ export function FollowProvider({ children }) {
     const [follow, setFollow] = useState([]);
     // const [loading, setLoading] = useState(false);
   
-    async function getfollows() {
+    async function Follow() {
         fetch(`http://localhost:3000/follow`,
         {
             method: "get",
@@ -22,8 +22,9 @@ export function FollowProvider({ children }) {
     })
 }
 
-async function Unfollow(){
-    fetch(`http://localhost:3000/follow/${postid}`, {
+
+async function Unfollow(userId){
+    fetch(`http://localhost:3000/follow/${userId}`, {
           method: "delete",
           headers: {
             "Authorization": "Bearer " + localStorage.getItem("jwt")
@@ -36,7 +37,7 @@ async function Unfollow(){
   
     return (
       <FollowContext.Provider
-        value={{ follow, getFollows, Unfollow }}
+        value={{Follow, Unfollow, follow ,}}
       >
         {children}
       </FollowContext.Provider>

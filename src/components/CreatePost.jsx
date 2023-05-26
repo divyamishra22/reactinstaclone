@@ -9,10 +9,6 @@ const CreatePost = () => {
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
 
-  const handleChange= (e)=> {
-    console.log(e.target.files);
-    setImage(e.target.files[0]);
-}
   useEffect(() => {
 
     // saving post to mongodb
@@ -33,7 +29,7 @@ const CreatePost = () => {
           if (data.error) {
             alert(data.error)
           } else {
-            alert("Successfully Posted")
+            // alert("Successfully Posted")
             setBody(" ")
             // navigate("/")
           }
@@ -42,12 +38,6 @@ const CreatePost = () => {
     }
 
   }, [url])
-
-  // const loadingMemo = useMemo(() => !(url), [url]);
-
-  // if (loadingMemo) {
-  //   return <p>Loading..</p>;
-  // }   
 
   const postDetails = () => {
 
@@ -66,26 +56,14 @@ const CreatePost = () => {
 
   }
 
-  // const loadfile = (event) => {
-  //   var output = document.getElementById("output");
-  //   output.src = URL.createObjectURL(event.target.files[0]);
-  //   output.onload = function () {
-  //     URL.revokeObjectURL(output.src); // free memory
-  //   };
-  // };
-
   return (
     <div className='createpost'>
       <div className='post-header'>
         <h4 style={{margin: "3px auto"}}> Create a New Post</h4>
-        <button id='Share' onClick={ postDetails() } >Share</button>
+        <button id='Share' onClick={postDetails} >Share</button>
       </div>
       <div className='main-div'>
-        <input type='file' accept='image/*' onChange={handleChange}
-        // onChange={(event) => {loadfile(event);
-            // setImage(event.target.files[0])
-            // }}
-            />
+        <input type='file' accept='image/*'/>
       </div>
       {/* details */}
       <div className="details">
@@ -94,7 +72,7 @@ const CreatePost = () => {
             <img
               src="picture1.jpg"/>
           </div>
-          <h5>Raha</h5>
+          {/* <h5>Raha</h5> */}
         </div>
         <textarea  type="text" placeholder="Write a caption...." value={body}
         onChange={(e) => {
