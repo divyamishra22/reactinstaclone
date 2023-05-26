@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
     async function editUser() {
-        fetch(`http://localhost:3000/follow`,
+        fetch(`http://localhost:3000/user/${userid}`,
         {
             method: "get",
             body:
