@@ -25,7 +25,7 @@ export function FollowProvider({ children }) {
 
 async function Unfollow(userId){
     fetch(`http://localhost:3000/follow/${userId}`, {
-          method: "delete",
+          method: "put",
           headers: {
             "Authorization": "Bearer " + localStorage.getItem("jwt")
           },
