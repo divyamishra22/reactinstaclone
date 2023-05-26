@@ -11,6 +11,7 @@ import SignUp from './components/SignUp'
 import Profile from './Pages/Profile';
 import CreatePost from './components/CreatePost'
 import Searchbar from './components/Searchbar'
+import { FollowProvider } from './hooks/follow'
 
 
 
@@ -21,6 +22,7 @@ function App() {
     <>
    <BrowserRouter>
     <Navbar/>
+    <FollowProvider>
      <Routes>
       {/* <Route path="/" element={<Home/>}></Route> */}
       <Route path="/SignIn" element={<SignIn/>}></Route>
@@ -30,6 +32,7 @@ function App() {
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
+      </FollowProvider>
       </BrowserRouter>
 
     </>
