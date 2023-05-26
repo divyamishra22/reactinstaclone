@@ -21,10 +21,22 @@ export function FollowProvider({ children }) {
         
     })
 }
+
+async function Unfollow(){
+    fetch(`http://localhost:3000/follow/${postid}`, {
+          method: "delete",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("jwt")
+          },
+          })
+        .then(res => res.json())
+          .then(data => {
+           console.log(data)})
+  }
   
     return (
       <FollowContext.Provider
-        value={{ follow, getFollows,  }}
+        value={{ follow, getFollows, Unfollow }}
       >
         {children}
       </FollowContext.Provider>
