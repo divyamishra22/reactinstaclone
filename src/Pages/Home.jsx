@@ -1,15 +1,19 @@
 import React, { useEffect, useState , useMemo} from 'react'
 import Profile from '../components/Profile';
+import { useFollow } from '../hooks/follow';
 import Main from '../components/Main'
 
 const Home = () => {
+  const { Follow ,follow } = useFollow();
     
     // const [user,setUser] = useState('');
-    const [follow, setFollow] = useState([]);
-    const [feed , setFeed]   = useState('');
+    // const [follow, setFollow] = useState([]);
+    const [feed , setFeed]   = useState([]);
     
-    
-    useEffect(() => {
+
+    async function FollowersUser(){
+      Follow();
+    }
     async function getfeed() {
       fetch(`http://localhost:3000/feed`, {
         method: "get",
@@ -24,24 +28,11 @@ const Home = () => {
          
     })
     }
-    async function getfollows() {
-        fetch(`http://localhost:3000/follow`,
-        {
-            method: "get",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt")   
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-         console.log(data)
-        setFollow(data);
-        
-    })
-}
+
     
+    useEffect(() => {
+    FollowersUser();
     getfeed();
-     getfollows();
   }, []);
 
 
