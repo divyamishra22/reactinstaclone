@@ -3,7 +3,7 @@ import { createContext, useContext, useCallback, useState } from 'react';
 const FollowContext = createContext();
 
 export function FollowProvider({ children }) {
-    const [follows, setFollows] = useState([]);
+    const [follow, setFollow] = useState([]);
     // const [loading, setLoading] = useState(false);
   
     async function getfollows() {
@@ -24,9 +24,17 @@ export function FollowProvider({ children }) {
   
     return (
       <FollowContext.Provider
-        value={{ follows, getFollows,  }}
+        value={{ follow, getFollows,  }}
       >
         {children}
       </FollowContext.Provider>
     );
+  }
+
+  export function useFollow() {
+    const context = useContext(FollowContext);
+    if (!context) {
+      throw new Error('useFollow must be used within a FollowProvider  ');
+    }
+    return context;
   }
