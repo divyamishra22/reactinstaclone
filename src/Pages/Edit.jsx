@@ -11,6 +11,13 @@ const Edit = () => {
         bio: user.bio,
       });
 
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, username, bio, email, password } = userData;
+        editUser({ name, username, bio, email, password });
+      };
+
       const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
       };
@@ -38,7 +45,7 @@ const Edit = () => {
          <p>To persist changes you must login again</p>
          </div>
       
-        <button type="submit" >Update</button>
+        <button type="submit" onSubmit={handleSubmit} >Update</button>
     </div>
   )
 }
