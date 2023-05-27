@@ -1,17 +1,30 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useAuth } from '../hooks/auth';
+import {
+    //  Link,
+     useParams } from 'react-router-dom';
+
 
 const Edit = () => {
-    const { user,   editUser,  } = useAuth();
-    const [userData, setUserData] = useState({
-        name: user.name,
-        username: user.username,
-        email: user.email,
-        password: user.password,
-        bio: user.bio,
-      });
+    const {  editUser, getUserdetails } = useAuth();
+    const { username } = useParams();
 
+    const [userData, setUserData] = useState('');
 
+      useEffect(()=>
+        {
+         const user = getUserdetails(username);
+         setUserData({
+            name: user.name,
+            username:user. username,
+            email:user. email,
+            password:user.password,
+            bio:user.bio,
+          });
+    
+        } ,[]);
+   
+    
       const handleSubmit = (e) => {
         e.preventDefault();
         const { name, username, bio, email, password } = userData;
