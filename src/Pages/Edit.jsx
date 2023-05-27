@@ -1,19 +1,16 @@
 import React, {useEffect, useState, useMemo} from 'react'
 import { useAuth } from '../hooks/auth';
-import {
-    //  Link,
-     useParams } from 'react-router-dom';
 
 
-const Edit = ({user}) => {
-    const {  editUser,} = useAuth();
-    // const { username } = useParams();
+const Edit = () => {
+    const { user, editUser,} = useAuth();
+    
      
-      const loadingMemo = useMemo(() => !(user && user.id), [user]);
+      // const loadingMemo = useMemo(() => !(user && user.id), [user]);
 
-        if (loadingMemo) {
-          return <p>Loading..</p>;
-        }   
+      //   if (loadingMemo) {
+      //     return <p>Loading..</p>;
+      //   }   
 
         const [userData, setUserData] = useState({
           name: user.name,
