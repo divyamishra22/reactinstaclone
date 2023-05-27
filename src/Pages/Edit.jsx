@@ -1,34 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useMemo} from 'react'
 import { useAuth } from '../hooks/auth';
 import {
     //  Link,
      useParams } from 'react-router-dom';
 
 
-const Edit = () => {
-    const {  editUser, getUserdetails } = useAuth();
-    const { username } = useParams();
+const Edit = ({user}) => {
+    const {  editUser,} = useAuth();
+    // const { username } = useParams();
+     
+      const loadingMemo = useMemo(() => !(user && user.id), [user]);
 
-    const [userData, setUserData] = useState('');
+        if (loadingMemo) {
+          return <p>Loading..</p>;
+        }   
 
-      useEffect(()=>
-        {
-         const user = getUserdetails(username);
-         setUserData({
-            name: user.name,
-            username:user. username,
-            email:user. email,
-            password:user.password,
-            bio:user.bio,
-          });
+        const [userData, setUserData] = useState({
+          name: user.name,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          bio: user.bio,
+          
+        });
     
-        } ,[]);
-   
     
       const handleSubmit = (e) => {
         e.preventDefault();
         const { name, username, bio, email, password } = userData;
         editUser({ name, username, bio, email, password });
+        
       };
 
       const handleChange = (e) => {
@@ -36,9 +37,13 @@ const Edit = () => {
       };
 
   return (
-    <div className='edituser'>
+    <div className='edituser' >
         <div>
-        <input name="username" placeholder="Username" value={userData.username} onChange={handleChange}/>
+        <input type='text' name="username" placeholder="Username" value={userData.username} onChange={handleChange}/>
+        </div>
+
+        <div>
+        <input type='text' name="name" placeholder="Name" value={userData.name} onChange={handleChange}/>
         </div>
 
        <div> 
@@ -58,7 +63,7 @@ const Edit = () => {
          <p>To persist changes you must login again</p>
          </div>
       
-        <button type="submit" onSubmit={handleSubmit} >Update</button>
+        <button type="submit"onClick={handleSubmit} >Update</button>
     </div>
   )
 }
