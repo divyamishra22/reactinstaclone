@@ -7,7 +7,7 @@ export function AuthProvider({ children }) {
 
 
   const [user, setUser] = useState(null);
-  const [userid, setUserid] = useState(null);
+
   const [isError, setIsError] = useState("");
   
 
@@ -17,8 +17,8 @@ export function AuthProvider({ children }) {
      
       const { accessToken } = res.data;
       api.defaults.headers.authorization = `Bearer ${accessToken}`;     //setting token value to api headers
-      const signeduser = await api.get('http://localhost:3000/user/auth/me');
-        setUserid(signeduser.sub);
+      const loggeduser = await api.get('http://localhost:3000/user/auth/me');
+        setUser(loggeduser);
       console.log(res);
       console.log(userid);
          localStorage.setItem("jwt", res.data)
@@ -40,16 +40,6 @@ export function AuthProvider({ children }) {
   }
 
 
-  const getUserDetails = async (username) => {
-    try {
-      const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`)
-      setUser(res.user);
-      return user;
-      // console.log(res);
-    } catch (error) {
-      setIsError(error);
-    }
-  }
     
 return (
     <AuthContext.Provider
@@ -57,8 +47,6 @@ return (
         editUser,
         SignIn, 
         user,
-        userid,
-        getUserDetails,
         isError
       }}
     >

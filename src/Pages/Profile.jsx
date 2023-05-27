@@ -3,7 +3,7 @@ import {
      Link,
      useParams } from 'react-router-dom';
     //  import api from '../api/index1';
-    import Edit from './Edit';
+    
 
 const Profile = () => {
     const { username } = useParams();
@@ -13,7 +13,7 @@ const Profile = () => {
     const [isProfile, setIsProfile] = useState(false);
     const [count, setCount] = useState(null);
     const [posts, setPosts] = useState([]);
-  
+    const [editOpen, setEditOpen] = useState(false);
    
     useEffect(() => {
       async function getProfile() {
@@ -114,9 +114,9 @@ const Profile = () => {
             <h1>{user.name}</h1>
             {isProfile ? (
              <Link to={`/edit/${username}`}>
-             <button type='submit' id='editbtn'>Edit Profile</button>
-           </Link> &&
-           <Edit user={user}/>
+             <button type='submit' id='editbtn'>Edit Profile</button> 
+           </Link> 
+          
             ) : isFollow ? (
               <button onClick={unfollowUser}>Unfollow</button>
             ) : (
