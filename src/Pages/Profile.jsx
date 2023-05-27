@@ -112,9 +112,9 @@ const Profile = () => {
             <div className='profile-data'>
             <h1>{user.name}</h1>
             {isProfile ? (
-            //   <Link to={`/edit/${username}`}>
+              <Link to={`/edit/${username}`}>
                 <button type='submit' id='editbtn'>Edit Profile</button>
-            //   </Link>
+              </Link>
             ) : isFollow ? (
               <button onClick={unfollowUser}>Unfollow</button>
             ) : (
