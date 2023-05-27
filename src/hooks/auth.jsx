@@ -7,32 +7,29 @@ export function AuthProvider({ children }) {
 
 
   const [user, setUser] = useState(null);
+  const [userid, setUserid] = useState(null);
   const [isError, setIsError] = useState("");
+  
 
-  const SignIn = async () => {
+  const SignIn = async ({ email, password }) => {
     try {
       const res = await api.post("http://localhost:3000/auth/login",{password: password, email:email,})
      
       const { accessToken } = res.data;
       api.defaults.headers.authorization = `Bearer ${accessToken}`;     //setting token value to api headers
       const signeduser = await api.get('http://localhost:3000/user/auth/me');
-        setUser(signeduser);
-      
+        // setUser(signeduser);
+        setUserid(signeduser.sub);
       console.log(res);
-      // if(res.data === "user does not exist"){
-      // alert(res.data);
-      // }
-      // else{
-      //   alert("SignedIn Successfully")
-      //    localStorage.setItem("jwt", res.data)
-      // }
+      console.log(userid);
+         localStorage.setItem("jwt", res.data)
     } catch (error) {
       setIsError(error);
     }
   }
 
 
-    async function editUser() {
+    async function editUser(userid) {
         fetch(`http://localhost:3000/user/${userid}`,
         {
             method: "patch",
@@ -52,6 +49,16 @@ export function AuthProvider({ children }) {
     })
   }
 
+
+  const getUserDetails = async (userid) => {
+    try {
+      const res = await api.put(`http://localhost:3000/user/${userid}`)
+      setUser(res);
+      console.log(res);
+    } catch (error) {
+      setIsError(error);
+    }
+  }
     
 return (
     <AuthContext.Provider
@@ -59,6 +66,8 @@ return (
         editUser,
         SignIn, 
         user,
+        userid,
+        getUserDetails,
         isError
       }}
     >
