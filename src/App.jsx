@@ -7,11 +7,12 @@ import Home from './Pages/Home'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-// import Profile from './components/Profile'
 import Profile from './Pages/Profile';
 import CreatePost from './components/CreatePost'
 import Searchbar from './components/Searchbar'
 import { FollowProvider } from './hooks/follow'
+import { AuthProvider } from './hooks/auth'
+import Edit from './Pages/Edit'
 
 
 
@@ -22,17 +23,20 @@ function App() {
     <>
    <BrowserRouter>
     <Navbar/>
+    <AuthProvider>
     <FollowProvider>
      <Routes>
       {/* <Route path="/" element={<Home/>}></Route> */}
       <Route path="/SignIn" element={<SignIn/>}></Route>
       <Route path="/SignUp" element={<SignUp/>}></Route>
       <Route path="/profile/:username" element={<Profile/>}></Route>
+      <Route path="/edit/:username" element={<Edit/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
       </FollowProvider>
+      </AuthProvider>
       </BrowserRouter>
 
     </>

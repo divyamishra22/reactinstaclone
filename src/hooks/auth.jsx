@@ -1,5 +1,5 @@
 import { createContext, useContext,  useState } from 'react';
-
+import api from '../api/index1';
 
 const AuthContext = createContext();
 
@@ -40,11 +40,12 @@ export function AuthProvider({ children }) {
   }
 
 
-  const getUserDetails = async (userid) => {
+  const getUserDetails = async (username) => {
     try {
-      const res = await api.put(`http://localhost:3000/user/${userid}`)
-      setUser(res);
-      console.log(res);
+      const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`)
+      setUser(res.user);
+      return user;
+      // console.log(res);
     } catch (error) {
       setIsError(error);
     }

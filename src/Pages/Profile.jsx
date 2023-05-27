@@ -1,8 +1,9 @@
 import React, { useEffect, useState , useMemo} from 'react'
 import {
-    //  Link,
+     Link,
      useParams } from 'react-router-dom';
     //  import api from '../api/index1';
+    import Edit from './Edit';
 
 const Profile = () => {
     const { username } = useParams();
@@ -112,9 +113,10 @@ const Profile = () => {
             <div className='profile-data'>
             <h1>{user.name}</h1>
             {isProfile ? (
-              <Link to={`/edit/${username}`}>
-                <button type='submit' id='editbtn'>Edit Profile</button>
-              </Link>
+             <Link to={`/edit/${username}`}>
+             <button type='submit' id='editbtn'>Edit Profile</button>
+           </Link> &&
+           <Edit user={user}/>
             ) : isFollow ? (
               <button onClick={unfollowUser}>Unfollow</button>
             ) : (
