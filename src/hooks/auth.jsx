@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useState } from 'react';
+import { createContext, useContext,  useState } from 'react';
 
 
 const AuthContext = createContext();
@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
       const { accessToken } = res.data;
       api.defaults.headers.authorization = `Bearer ${accessToken}`;     //setting token value to api headers
       const signeduser = await api.get('http://localhost:3000/user/auth/me');
-        // setUser(signeduser);
         setUserid(signeduser.sub);
       console.log(res);
       console.log(userid);
@@ -29,24 +28,15 @@ export function AuthProvider({ children }) {
   }
 
 
-    async function editUser(userid) {
-        fetch(`http://localhost:3000/user/${userid}`,
-        {
-            method: "patch",
-            body:
-            ({username,
-             password,
-             name,
-             email,
-              bio ,}),
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt")   
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-         console.log(data)
-    })
+    async function editUser({password, name, email,username,bio}) {
+      const res = await api.post(`http://localhost:3000/user/update`,
+      { password:password,
+        name: name,
+        email: email,
+        username: username,
+        bio: bio,})
+        console.log(res);
+            
   }
 
 
