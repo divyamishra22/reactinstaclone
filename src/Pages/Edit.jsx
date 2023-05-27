@@ -25,6 +25,7 @@ const Edit = () => {
       const handleSubmit = (e) => {
         e.preventDefault();
         const { name, username, bio, email, password } = userData;
+        console.log(userData);
         editUser({ name, username, bio, email, password });
         
       };

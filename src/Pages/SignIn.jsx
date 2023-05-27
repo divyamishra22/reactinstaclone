@@ -1,14 +1,13 @@
 import React ,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import './SignIn.css'
-import axios from 'axios'
-
+import {useAuth}  from '../hooks/auth'
 
 const SignIn = () => {
 
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
-   const [isError, setIsError] = useState("");
+  const {SignIn, } = useAuth();
 
 
   const handleSubmit = (e) => {
@@ -17,42 +16,19 @@ const SignIn = () => {
         alert("Email or Password cannot be blank");
     }
     else {
-        getMyPostData();
+        SignIn({email, password})
     }
     setemail('');
     setpassword('');
 };
-const getMyPostData = async () => {
-  try {
-    const res = await axios.post("http://localhost:3000/auth/login",{
 
-      password: password,
-      email:email,
-     
-    })
-   
-    
-    
-    console.log(res);
-    if(res.data === "user does not exist"){
-    alert(res.data);
-    }
-    else{
-      alert("SignedIn Successfully")
-       localStorage.setItem("jwt", res.data)
-      // localStorage.setItem("user", JSON.stringify(res.user))
-    }
-  } catch (error) {
-    setIsError(error);
-  }
-}
   return (
     <div className='signin'>
       <div>
         
         <div className='loginform'>
           <div>
-          <input type="email" name="email" id="email" value={email} placeholder='Email'
+          <input type="name" name="email" id="email" value={email} placeholder='Email'
            onChange={(e) => { setemail(e.target.value) }}/>
         </div>
         <div>

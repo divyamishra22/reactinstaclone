@@ -5,7 +5,7 @@ import './App.css'
 import Navbar from  './components/Navbar'
 import Home from './Pages/Home'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
-import SignIn from './components/SignIn'
+import SignIn from './Pages/SignIn'
 import SignUp from './components/SignUp'
 import Profile from './Pages/Profile';
 import CreatePost from './components/CreatePost'

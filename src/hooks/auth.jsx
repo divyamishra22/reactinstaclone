@@ -16,12 +16,21 @@ export function AuthProvider({ children }) {
       const res = await api.post("http://localhost:3000/auth/login",{password: password, email:email,})
      
       const { accessToken } = res.data;
+      localStorage.setItem("jwt", res.data)
       api.defaults.headers.authorization = `Bearer ${accessToken}`;     //setting token value to api headers
-      const loggeduser = await api.get('http://localhost:3000/user/auth/me');
-        setUser(loggeduser);
-      console.log(res);
-      console.log(userid);
-         localStorage.setItem("jwt", res.data)
+       fetch(`http://localhost:3000/user/auth/me`,
+      {
+          method: "get",
+          headers: {
+              "Authorization": "Bearer " + localStorage.getItem("jwt")   
+          }
+      })
+      .then(res => res.json())
+      .then(data => {
+       console.log(data)
+      setUser(data);
+      
+  })
     } catch (error) {
       setIsError(error);
     }
@@ -29,13 +38,28 @@ export function AuthProvider({ children }) {
 
 
     async function editUser({password, name, email,username,bio}) {
-      const res = await api.post(`http://localhost:3000/user/update`,
-      { password:password,
-        name: name,
-        email: email,
-        username: username,
-        bio: bio,})
-        console.log(res);
+      fetch(`http://localhost:3000/user/update`,
+      {
+          method: "post",
+          body:JSON.stringify({
+            password:password,
+            name:name,
+            email:email,
+            username:username,
+            bio:bio,
+
+          }),
+          headers: {
+              "Authorization": "Bearer " + localStorage.getItem("jwt")   
+          }
+      })
+      .then(res => res.json())
+      .then(data => {
+       console.log(data)
+      
+      
+  })
+ 
             
   }
 
