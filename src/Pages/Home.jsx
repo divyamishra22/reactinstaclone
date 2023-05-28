@@ -2,42 +2,25 @@ import React, { useEffect, useState , useMemo} from 'react'
 import Profile from '../components/Profile';
 import { useFollow } from '../hooks/follow';
 import Main from '../components/Main'
+import { useAuth } from '../hooks/auth';
+import { useFeed } from '../hooks/feed';
+
 
 const Home = () => {
-  const { Follow ,follow } = useFollow();
-    
-    // const [user,setUser] = useState('');
-    // const [follow, setFollow] = useState([]);
-    const [feed , setFeed]   = useState([]);
-    
+  const {user} = useAuth();
+  // const user = localStorage.getItem("user");
+  const { Follow ,follow , } = useFollow();
+  const { feed, getfeed} = useFeed();
+ 
 
-    async function FollowersUser(){
-      Follow();
-    }
-    async function getfeed() {
-      fetch(`http://localhost:3000/feed`, {
-        method: "get",
-        headers: {
-          "Authorization": "Bearer " + localStorage.getItem("jwt")
-        },
-        })
-      .then(res => res.json())
-        .then(data => {
-         console.log(data)
-         setFeed(data);
-         
-    })
-    }
-
-    
     useEffect(() => {
-    FollowersUser();
+      Follow();
     getfeed();
   }, []);
 
 
    
- const loadingMemo = useMemo(() => !(feed), [feed]);
+ const loadingMemo = useMemo(() => !(user && user.id), [user]);
 
     if (loadingMemo) {
       return <p>Loading..</p>;
@@ -47,9 +30,9 @@ const Home = () => {
   return (
     <>
     <div>
-     {/* <Profile key={user.id}
+     <Profile key={user.id}
      username={user.username}
-     name={user.name}/> */}
+     name={user.name}/>
     </div>
     <div>
        {follow && 

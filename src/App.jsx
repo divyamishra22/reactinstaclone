@@ -13,6 +13,7 @@ import Searchbar from './components/Searchbar'
 import { FollowProvider } from './hooks/follow'
 import { AuthProvider } from './hooks/auth'
 import Edit from './Pages/Edit'
+import { FeedProvider } from './hooks/feed'
 
 
 
@@ -25,6 +26,7 @@ function App() {
     <Navbar/>
     <AuthProvider>
     <FollowProvider>
+      <FeedProvider>
      <Routes>
       {/* <Route path="/" element={<Home/>}></Route> */}
       <Route path="/SignIn" element={<SignIn/>}></Route>
@@ -35,6 +37,7 @@ function App() {
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
+      </FeedProvider>
       </FollowProvider>
       </AuthProvider>
       </BrowserRouter>

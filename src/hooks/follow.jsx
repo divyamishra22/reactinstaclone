@@ -11,7 +11,8 @@ export function FollowProvider({ children }) {
         {
             method: "get",
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt")   
+                "Authorization": "Bearer " + localStorage.getItem("jwt"), 
+                  
             }
         })
         .then(res => res.json())
@@ -27,7 +28,8 @@ async function Unfollow(userId){
     fetch(`http://localhost:3000/follow/${userId}`, {
           method: "put",
           headers: {
-            "Authorization": "Bearer " + localStorage.getItem("jwt")
+            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+            
           },
           })
         .then(res => res.json())

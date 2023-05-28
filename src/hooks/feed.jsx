@@ -1,4 +1,4 @@
-import { createContext,  useState } from 'react';
+import { createContext,useContext,  useState } from 'react';
 
 
 const FeedContext = createContext();
@@ -10,7 +10,8 @@ export function FeedProvider({ children }) {
     fetch(`http://localhost:3000/feed`, {
       method: "get",
       headers: {
-        "Authorization": "Bearer " + localStorage.getItem("jwt")
+        "Authorization": "Bearer " + localStorage.getItem("jwt"),
+        
       },
       })
     .then(res => res.json())
@@ -23,7 +24,7 @@ export function FeedProvider({ children }) {
   return (
     <FeedContext.Provider
       value={{
-        getFeed,
+        getfeed,
         feed,
       }}
     >
