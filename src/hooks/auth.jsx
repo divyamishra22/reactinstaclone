@@ -1,12 +1,21 @@
-import { createContext, useContext,  useState } from 'react';
+import { createContext, useContext,useCallback,  useState } from 'react';
 import api from '../api/index1';
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
 
+  const [data, setData] = useState(() => {
+   
+    const user = localStorage.getItem("user");
+    if ( user) {
+      
+      return { user: JSON.parse(user)};
+    }
+    return { user: null };
 
-  const [user, setUser] = useState(null);
+  });
+ 
 
   const [isError, setIsError] = useState("");
   
@@ -14,54 +23,44 @@ export function AuthProvider({ children }) {
   const SignIn = async ({ email, password }) => {
     try {
       const res = await api.post("http://localhost:3000/auth/login",{password: password, email:email,})
-     
-      const { accessToken } = res.data;
+      console.log(res.data);
       localStorage.setItem("jwt", res.data)
-      api.defaults.headers.authorization = `Bearer ${accessToken}`;     //setting token value to api headers
-       fetch(`http://localhost:3000/user/auth/me`,
-      {
-          method: "get",
-          headers: {
-              "Authorization": "Bearer " + localStorage.getItem("jwt")   
-          }
-      })
-      .then(res => res.json())
-      .then(data => {
-       console.log(data)
-      setUser(data);
-      
+  const user = await api.get('/user/auth/me',{
+    headers:{
+      "Authorization": "Bearer " + localStorage.getItem("jwt")   
+    }
   })
+  console.log(user.data);
+  localStorage.setItem('user', JSON.stringify(user.data));
+  setData({
+    user: user.data,
+  });
     } catch (error) {
       setIsError(error);
     }
   }
-
-
-    async function editUser({password, name, email,username,bio}) {
-      fetch(`http://localhost:3000/user/update`,
-      {
-          method: "post",
-          body:JSON.stringify({
-            password:password,
-            name:name,
-            email:email,
-            username:username,
-            bio:bio,
-
-          }),
-          headers: {
-              "Authorization": "Bearer " + localStorage.getItem("jwt")   
-          }
-      })
-      .then(res => res.json())
-      .then(data => {
-       console.log(data)
-      
-      
-  })
  
-            
-  }
+
+
+    const editUser = async({password, name, email,username,bio})=> {
+      
+      console.log(name);
+    const res = await api.post('/user/update', {
+      password,
+      name,
+      email,
+      username,
+      bio,
+    },
+    {
+      headers:{
+        "Authorization": "Bearer " + localStorage.getItem("jwt")   
+      }
+    });
+    console.log(res.data);
+ 
+
+}
 
 
     
@@ -70,7 +69,7 @@ return (
       value={{
         editUser,
         SignIn, 
-        user,
+        user: data.user,
         isError
       }}
     >
