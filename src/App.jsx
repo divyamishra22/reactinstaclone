@@ -23,10 +23,11 @@ function App() {
   return (
     <>
    <BrowserRouter>
-    <Navbar/>
+    
     <AuthProvider>
     <FollowProvider>
       <FeedProvider>
+      <Navbar/>
      <Routes>
       {/* <Route path="/" element={<Home/>}></Route> */}
       <Route path="/SignIn" element={<SignIn/>}></Route>

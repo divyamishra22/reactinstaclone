@@ -9,12 +9,12 @@ import { useFeed } from '../hooks/feed';
 const Home = () => {
   const {user} = useAuth();
   // const user = localStorage.getItem("user");
-  const { Follow ,follow , } = useFollow();
+  const { getFollows ,follow , } = useFollow();
   const { feed, getfeed} = useFeed();
  
 
     useEffect(() => {
-      Follow();
+      getFollows();
     getfeed();
   }, []);
 
