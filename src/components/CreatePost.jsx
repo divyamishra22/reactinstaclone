@@ -31,6 +31,7 @@ const CreatePost = () => {
           } else {
             // alert("Successfully Posted")
             setBody(" ")
+            setImage()
             // navigate("/")
           }
         })
@@ -56,6 +57,15 @@ const CreatePost = () => {
 
   }
 
+  const loadfile = (event) => {
+    var output = document.getElementById("output");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src); // free memory
+    };
+  };
+
+
   return (
     <div className='createpost'>
       <div className='post-header'>
@@ -63,15 +73,24 @@ const CreatePost = () => {
         <button id='Share' onClick={postDetails} >Share</button>
       </div>
       <div className='main-div'>
-        <input type='file' accept='image/*'/>
+      <img
+          id="output"
+          src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-image-512.png"
+        />
+        <input type='file' accept='image/*'
+         onChange={(event) => {
+          loadfile(event);
+          setImage(event.target.files[0])
+        }}
+        />
       </div>
       {/* details */}
       <div className="details">
         <div className="card-header">
-          <div className="card-pic">
+          {/* <div className="card-pic">
             <img
               src="picture1.jpg"/>
-          </div>
+          </div> */}
           {/* <h5>Raha</h5> */}
         </div>
         <textarea  type="text" placeholder="Write a caption...." value={body}
