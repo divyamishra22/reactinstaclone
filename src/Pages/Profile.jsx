@@ -2,18 +2,19 @@ import React, { useEffect, useState , useMemo} from 'react'
 import {
      Link,
      useParams } from 'react-router-dom';
+import { useFollow } from '../hooks/follow';
     //  import api from '../api/index1';
     
 
 const Profile = () => {
     const { username } = useParams();
-
+    const {handlefollow} = useFollow();
     const [user, setUser] = useState(null);
     const [isFollow, setIsFollow] = useState(false);
     const [isProfile, setIsProfile] = useState(false);
     const [count, setCount] = useState(null);
     const [posts, setPosts] = useState([]);
-    const [editOpen, setEditOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
    
     useEffect(() => {
       async function getProfile() {
@@ -29,15 +30,6 @@ const Profile = () => {
         .then(res => res.json())
           .then(data => {
            console.log(data)
-        // const {
-        //   isFollow: _isFollow,
-        //   isProfile: _isProfile,
-        //   userFollowersCount,
-        //   userFollowingCount,
-        //   userPostsCount,
-        //   user: _user,
-        // } = data;
-
        const _isFollow=  data.isFollow
        const  _isProfile =  data.isProfile
        const userFollowersCount=  data. userFollowersCount
@@ -67,40 +59,27 @@ const Profile = () => {
     }   
   
       
-  const followUser = () => {
-    fetch(`http://localhost:3000/follow/${user.id}`, {
-      method: "delete",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        userid: user.id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setIsFollow(true);
-      });
+  // const followUser = () => {
+  //   followuser(user.id);
+   
+  // };
+
+
+  const follow = () => {
+    try
+    {  setLoading(true)
+      handlefollow(user.id);
+   setIsFollow(!isFollow);}
+   finally{
+    setLoading(false)
+   }
   };
 
 
-  const unfollowUser = () => {
-    fetch(`http://localhost:3000/follow/${user.id}`, {
-      method: "post",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        id: user.id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setIsFollow(false);
-      });
-  };
+  // const unfollowUser = () => {
+  //   Unfollow(user.id)
+   
+  // };
 
 
   return (
@@ -118,9 +97,9 @@ const Profile = () => {
            </Link> 
           
             ) : isFollow ? (
-              <button onClick={unfollowUser}>Unfollow</button>
+              <button onClick={follow}>{loading?'loading..': 'Following'}</button>
             ) : (
-              <button onClick={followUser}>Follow</button>
+              <button onClick={follow}>{loading? 'loading..': 'Follow'}</button>
                 )}
             </div>
             <div className='profile-info'>
@@ -130,7 +109,9 @@ const Profile = () => {
             </div>
         </div>
       
-        <hr
+      {isFollow? (
+        <>
+      <hr
         style={{
           width: "90%",
 
@@ -141,10 +122,11 @@ const Profile = () => {
          {posts.length > 0 &&
             posts.map((photo) => (
             //   <Link key={photo.id} to={`/photo/${photo.id}`}>
-                <img src={``} />
+                <img src={photo.image} />
             //   </Link>
             ))}
       </div>
+      </>): (" ")}
     </div>
   )
 }
