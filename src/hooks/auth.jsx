@@ -56,10 +56,19 @@ export function AuthProvider({ children }) {
       headers:{
         "Authorization": "Bearer " + localStorage.getItem("jwt")   
       }
-    });
+    }
+    );
     console.log(res.data);
  
 
+}
+
+function signOut() {
+  localStorage.removeItem('jwt');
+  localStorage.removeItem('user');
+  setData({
+    //  token: null,
+     user: null });
 }
 
 
@@ -70,7 +79,8 @@ return (
         editUser,
         SignIn, 
         user: data.user,
-        isError
+        isError,
+        signOut
       }}
     >
       {children}
