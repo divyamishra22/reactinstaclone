@@ -14,6 +14,7 @@ import { FollowProvider } from './hooks/follow'
 import { AuthProvider } from './hooks/auth'
 import Edit from './Pages/Edit'
 import { FeedProvider } from './hooks/feed'
+import Post from './Pages/Post'
 
 
 
@@ -35,6 +36,7 @@ function App() {
       <Route path="/profile/:username" element={<Profile/>}></Route>
       <Route path="/edit/:username" element={<Edit/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
+      <Route path="/post/:postId" element={<Post/>}></Route>
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Routes>
