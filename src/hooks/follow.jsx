@@ -4,9 +4,10 @@ const FollowContext = createContext();
 
 export function FollowProvider({ children }) {
     const [follow, setFollow] = useState([]);
-    // const [loading, setLoading] = useState(false);
-  
-    async function Follow() {
+    // const [isFollow, setisfollow] = useState(false);
+
+
+    async function getFollows() {
         fetch(`http://localhost:3000/follow`,
         {
             method: "get",
@@ -24,22 +25,57 @@ export function FollowProvider({ children }) {
 }
 
 
-async function Unfollow(userId){
-    fetch(`http://localhost:3000/follow/${userId}`, {
-          method: "put",
-          headers: {
-            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+async function handlefollow(userId){
+  fetch(`http://localhost:3000/follow/${userId}`, {
+        method: "put",
+        headers: {
+          "Authorization": "Bearer " + localStorage.getItem("jwt"),
+          
+        },
+        })
+      .then(res => res.json())
+        .then(data => {
+         console.log(data)
+        })
+}
+
+
+// async function followuser(userId){
+//   fetch(`http://localhost:3000/follow/${userId}`, {
+//         method: "post",
+//         headers: {
+//           "Authorization": "Bearer " + localStorage.getItem("jwt"),
+          
+//         },
+//         })
+//       .then(res => res.json())
+//         .then(data => {
+//          console.log(data)
+//         setisfollow(true)})
+// }
+
+// async function Unfollow(userId){
+//     fetch(`http://localhost:3000/follow/${userId}`, {
+//           method: "put",
+//           headers: {
+//             "Authorization": "Bearer " + localStorage.getItem("jwt"),
             
-          },
-          })
-        .then(res => res.json())
-          .then(data => {
-           console.log(data)})
-  }
+//           },
+//           })
+//         .then(res => res.json())
+//           .then(data => {
+//            console.log(data)
+//            setisfollow(false)})
+//   }
   
     return (
       <FollowContext.Provider
-        value={{Follow, Unfollow, follow ,}}
+        value={{
+          getFollows,
+          //  Unfollow,
+           follow , 
+          // followuser,
+           handlefollow}}
       >
         {children}
       </FollowContext.Provider>
