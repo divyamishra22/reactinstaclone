@@ -7,6 +7,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import api from '../api/index1';
 import CommentsList from './CommentsList';
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,7 +19,7 @@ const Main = ({ feed}) => {
   const [comment, setcomment] = useState('');
   const [comments, setcomments] = useState(feed.posts.comments);
   const [show, setShow] = useState(false);
-
+ 
 
   const togglelike = useCallback( 
     ()=>{
@@ -85,7 +86,7 @@ const Main = ({ feed}) => {
         ( <FiHeart onClick={togglelike} size={18}/>)
   }
 
-<Link to={`/post/${post.id}`}>
+<Link to={`/post/${postid}`}>
           <FaComment size={18}  />
         </Link>
           
