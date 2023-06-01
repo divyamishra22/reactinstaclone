@@ -1,8 +1,11 @@
 import React from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
-
+import { useAuth } from '../hooks/auth'
+import { FaSearch, FaSignOutAlt, FaUser } from 'react-icons/fa';
 const Navbar = () => {
+
+const {signOut} = useAuth();
   return (
     <>
     <div className='navbar'>
@@ -30,6 +33,13 @@ const Navbar = () => {
       <Link to="/Search">
         <li>Search</li>
       </Link>
+
+     
+      {/* <FaSignOutAlt onClick={signOut}  /> */}
+     
+        <button onClick={signOut}>LogOut</button>
+      
+
 
      </ul>
     </div>
