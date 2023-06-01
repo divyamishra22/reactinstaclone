@@ -85,7 +85,9 @@ const Main = ({ feed}) => {
         ( <FiHeart onClick={togglelike} size={18}/>)
   }
 
-            <p>{feed.posts.likes.length} Likes</p>
+<Link to={`/post/${post.id}`}>
+          <FaComment size={18}  />
+        </Link>
           
            
               <p>{feed.posts.post} </p>
