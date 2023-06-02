@@ -109,7 +109,7 @@ const Profile = () => {
             </div>
         </div>
       
-      {isFollow? (
+      {isProfile || isFollow? (
         <>
       <hr
         style={{
