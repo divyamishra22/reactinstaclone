@@ -99,7 +99,9 @@ const Main = ({ feed}) => {
                   setShow(true);
                 }}
               >
+                <Link to={`/post/${postid}`}>
                 View all comments
+                </Link>
               </p>
               <CommentsList comments={comments} show={show}/>
          </div>
