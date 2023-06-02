@@ -5,7 +5,7 @@ import { useAuth } from '../hooks/auth'
 import { FaSearch, FaSignOutAlt, FaUser } from 'react-icons/fa';
 const Navbar = () => {
 
-const {signOut} = useAuth();
+const {user,signOut} = useAuth();
   return (
     <>
     <div className='navbar'>
@@ -32,6 +32,10 @@ const {signOut} = useAuth();
 
       <Link to="/Search">
         <li>Search</li>
+      </Link>
+
+      <Link  to={`/profile/${user && user.username}`}>
+        <li>Profile</li>
       </Link>
 
      
