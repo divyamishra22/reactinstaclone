@@ -21,11 +21,27 @@ export function FeedProvider({ children }) {
        
   })
   }
+
+
+  async function DeletePost(postid){
+    fetch(`http://localhost:3000/posts/${postid}`, {
+          method: "delete",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("jwt")
+          },
+          })
+        .then(res => res.json())
+          .then(data => {
+           console.log(data)})
+  }
+
+
   return (
     <FeedContext.Provider
       value={{
         getfeed,
         feed,
+        DeletePost
       }}
     >
       {children}
