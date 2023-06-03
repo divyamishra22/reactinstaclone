@@ -77,8 +77,10 @@ const Main = ({ feed}) => {
         />
         <div>
         <FiMoreHorizontal size={20}  onClick={() => setModalOpen(true)}/>
-       { modalOpen && <Modal isAuthor={feed.isAuthor} post={feed.posts}  setModalOpen={setModalOpen}/>}
+       { modalOpen && <Modal isAuthor={feed.isAuthor} post={feed.posts} setModalOpen={setModalOpen}/>}
          </div>
+         
+        {/* { <Modal isAuthor={feed.isAuthor} post={feed.posts} />} */}
          <div className="card-image">
          <img src={feed.posts.image} alt="" />
          <div>
@@ -90,8 +92,23 @@ const Main = ({ feed}) => {
           <FaComment size={18}  />
         </Link>
           
-           
-              <p>{feed.posts.post} </p>
+           <div className='card-details'>
+              <p>
+                {feed.posts.user.username}
+              <span>{feed.posts.post}</span>
+                 </p>
+                 <Link to={`/post/${postid}`}
+          style={{
+            fontWeight: 'bold',
+            textDecoration: 'none',
+            color: '#999',
+            marginTop: '10px',
+            display: 'block',
+          }}
+        >
+          More details..
+        </Link>
+                 </div>  
 
               <p
                 style={{ fontWeight: "bold", cursor: "pointer" }}

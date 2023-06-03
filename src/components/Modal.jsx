@@ -1,57 +1,74 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { useFollow } from '../hooks/follow';
-// import { FiMoreHorizontal } from 'react-icons/fi';
-
-const Modal = ({isAuthor, post, setModalOpen}) => {
-
-  const { Unfollow } = useFollow();
+import { FiMoreHorizontal } from 'react-icons/fi';
+import { Link } from 'react-router-dom'
+import { useFeed } from '../hooks/feed';
 
 
-  async function UnfollowUser(){
-    Unfollow(post.user.id);
-  }
 
-  async function DeletePost(){
-    fetch(`http://localhost:3000/posts/${post.id}`, {
-          method: "delete",
-          headers: {
-            "Authorization": "Bearer " + localStorage.getItem("jwt")
-          },
-          })
-        .then(res => res.json())
-          .then(data => {
-           console.log(data)})
-  }
+const Modal = ({isAuthor, post,
+   setModalOpen
+  }) => {
 
-  const toggleModal = () => {
+    // const [isOpen, setisOpen] = useState(false);
+  const { handlefollow , removeFollow} = useFollow();
+  const {DeletePost} = useFeed();
+
+
+
+  const toggleModal = useCallback(() => {
     setModalOpen(false);
-  };
+  },
+  // [isOpen]
+  );
+
+
+
+const   UnfollowUser = useCallback(()=>{
+    handlefollow(post.user.id);
+    removeFollow(post.user.id)
+   toggleModal()
+   
+   
+  },
+  [handlefollow, removeFollow, 
+    toggleModal
+  ]
+  )
+
+ const deletePost = useCallback(()=>{
+   DeletePost(post.id)
+   toggleModal()
+   
+ },
+ [toggleModal]
+ )
 
 
   return (
     <>
-     {/* <FiMoreHorizontal size={20}  onClick={() => setModalOpen(true)}/> */}
+     <FiMoreHorizontal size={20}  onClick={toggleModal}/>
     <div>
        <div className="darkBg" >
       <div className="centered">
         <div className="modal">
           {isAuthor? (<div className="modalHeader">
-          {/* <li>
-              <Link to={`/photo/${post.id}`}>Go to Publication</Link>
-            </li> */}
+          <li>
+              <Link to={`/post/${post.id}`}>Go to Publication</Link>
+            </li>
             <li className="red" 
-            onClick={DeletePost}
+            onClick={()=>deletePost()}
             >
               Delete Publication
             </li>
             <li  onClick={toggleModal}>Cancel</li>
           </div>):(
           <div className="modalHeader">
-          {/* <li>
-              <Link to={`/photo/${post.id}`}>Go to Publication</Link>
-            </li> */}
+          <li>
+              <Link to={`/post/${post.id}`}>Go to Publication</Link>
+            </li>
             <li className="red" 
-            onClick={UnfollowUser}
+            onClick={()=>UnfollowUser()}
             >
             Unfollow
             </li>
