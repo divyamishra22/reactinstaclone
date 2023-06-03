@@ -1,3 +1,4 @@
+import  { useCallback } from 'react'
 import { createContext, useContext,  useState } from 'react';
 
 const FollowContext = createContext();
@@ -40,6 +41,11 @@ async function handlefollow(userId){
 }
 
 
+const removeFollow = useCallback(async (id) => {
+  setFollow((state) => state.filter((follow) => follow.id !== id));
+}, []);
+
+
 // async function followuser(userId){
 //   fetch(`http://localhost:3000/follow/${userId}`, {
 //         method: "post",
@@ -65,7 +71,8 @@ async function handlefollow(userId){
 //         .then(res => res.json())
 //           .then(data => {
 //            console.log(data)
-//            setisfollow(false)})
+//           //  setisfollow(false)
+//           })
 //   }
   
     return (
@@ -73,7 +80,8 @@ async function handlefollow(userId){
         value={{
           getFollows,
           //  Unfollow,
-           follow , 
+           follow ,
+           removeFollow, 
           // followuser,
            handlefollow}}
       >
