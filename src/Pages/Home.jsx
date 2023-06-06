@@ -4,11 +4,12 @@ import { useFollow } from '../hooks/follow';
 import Main from '../components/Main'
 import { useAuth } from '../hooks/auth';
 import { useFeed } from '../hooks/feed';
+import './Home.css'
+
 
 
 const Home = () => {
   const {user} = useAuth();
-  // const user = localStorage.getItem("user");
   const { getFollows ,follow , } = useFollow();
   const { feed, getfeed} = useFeed();
  
@@ -26,19 +27,24 @@ const Home = () => {
       return <p>Loading..</p>;
     }   
 
+  
 
   return (
     <>
-    <div>
+    <div className='container'>
+      <div className='aside'>
+    <div className='containerowner'>
      <Profile key={user.id}
      username={user.username}
-     name={user.name}/>
+     name={user.name}
+     con= 'container1'/>
     </div>
-    <div>
+    <div className='containerfollows'>
        {follow && 
             follow.map((follows) => (
         <Profile 
                 // img={user.avatar}
+                con= 'container1'
                 key={follows.userTo.id}
                 username={follows.userTo.username}
                 name={follows.userTo.name}/>
@@ -46,9 +52,12 @@ const Home = () => {
            
             )}
     </div>
-    <div>
+    </div>
+    
+    <div className='containerfeeds'>
     {feed.length > 0 &&
               feed.map((feed) => <Main key={feed.posts.id} feed={feed} />)}
+    </div>
     </div>
     </>
   )
