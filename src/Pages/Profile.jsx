@@ -4,7 +4,7 @@ import {
      useParams } from 'react-router-dom';
 import { useFollow } from '../hooks/follow';
     //  import api from '../api/index1';
-    
+  import UploadModal from '../components/uploadModal'; 
 
 const Profile = () => {
     const { username } = useParams();
@@ -15,6 +15,9 @@ const Profile = () => {
     const [count, setCount] = useState(null);
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [changePic, setChangePic] = useState(false)
+
+
    
     useEffect(() => {
       async function getProfile() {
@@ -58,13 +61,6 @@ const Profile = () => {
       return <p>Loading..</p>;
     }   
   
-      
-  // const followUser = () => {
-  //   followuser(user.id);
-   
-  // };
-
-
   const follow = () => {
     try
     {  setLoading(true)
@@ -76,10 +72,14 @@ const Profile = () => {
   };
 
 
-  // const unfollowUser = () => {
-  //   Unfollow(user.id)
-   
-  // };
+  const changeprofile = () => {
+    if (changePic) {
+      setChangePic(false)
+    } else {
+      setChangePic(true)
+    }
+  }
+
 
 
   return (
@@ -87,7 +87,12 @@ const Profile = () => {
         <div className='profile-frame'>
             <div className='profile-pic'>
             {/* <img src={user.Photo ? user.Photo : picLink} alt="" /> */}
-            {/* <img src="picture1.jpg"/> */}
+            <img src="https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png" 
+             onClick={changeprofile}/>
+              {
+        changePic &&
+        <UploadModal changeprofile={changeprofile} />
+      }
             </div>
             <div className='profile-data'>
             <h1>{user.name}</h1>
@@ -121,13 +126,19 @@ const Profile = () => {
          <div className="gallery">
          {posts.length > 0 &&
             posts.map((photo) => (
-            //   <Link key={photo.id} to={`/photo/${photo.id}`}>
+              <Link to={`/post/${photo.id}`}>
                 <img src={photo.image} />
-            //   </Link>
+              </Link>
             ))}
       </div>
       </>): (" ")}
+      {/* {
+        changePic &&
+        <UploadModal changeprofile={changeprofile} />
+      } */}
     </div>
+    
+    
   )
 }
 
