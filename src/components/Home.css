@@ -6,12 +6,16 @@
 
 .card-header{
     display:flex;
+    justify-content: space-between;
+    padding: 16px;
+    align-items: center;
+    
 }
 
-.card-header > h5{
+/* .card-header > h5{
     margin: 0;
     padding: 11px;
-}
+} */
 
 .card-pic img{
     width: 30px;
