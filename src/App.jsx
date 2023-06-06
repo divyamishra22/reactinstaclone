@@ -14,6 +14,7 @@ import { FollowProvider } from './hooks/follow'
 import { AuthProvider } from './hooks/auth'
 import Edit from './Pages/Edit'
 import { FeedProvider } from './hooks/feed'
+import { UploadProvider } from './hooks/upload'
 import Post from './Pages/Post'
 
 
@@ -26,6 +27,7 @@ function App() {
    <BrowserRouter>
     
     <AuthProvider>
+    <UploadProvider>
     <FollowProvider>
       <FeedProvider>
       <Navbar/>
@@ -42,6 +44,7 @@ function App() {
       </Routes>
       </FeedProvider>
       </FollowProvider>
+      </UploadProvider>
       </AuthProvider>
       </BrowserRouter>
 
