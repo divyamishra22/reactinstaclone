@@ -1,6 +1,69 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
 
-const uploadModal = () => {
+const UploadModal = ({changeprofile}) => {
+    const hiddenFileInput = useRef(null);
+    const [image, setImage] = useState("");
+    const [url, setUrl] = useState("");
+
+
+ // posting image to cloudinary
+ const postDetails = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "myinstagram")
+    data.append("cloud_name", "divya123")
+    fetch("https://api.cloudinary.com/v1_1/divya123/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => setUrl(data.url))
+      .catch((err) => console.log(err));
+    console.log(url);
+  };
+
+  const postPic = () => {
+    // saving post to mongodb
+    fetch("", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        pic: url,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        changeprofile();
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+    const handleClick = () => {
+        hiddenFileInput.current.click();
+      };
+    
+
+    //   useEffect(() => {
+    //     if (image) {
+    //       postDetails();
+    //     }
+    //   }, [image]);
+
+    //   useEffect(() => {
+    //     if (url) {
+    //       postPic();
+    //     }
+    //   }, [url]);
+
+   
+
+    
   return (
     <div  className='profile-pic'>
         <div className='change-pic'>
@@ -10,15 +73,18 @@ const uploadModal = () => {
         <button
             className="upload-btn"
             style={{ color: "#1EA1F7" }}
-            
+            onClick={handleClick}
           >
             Upload Photo
           </button>
           <input
             type="file"
-            // ref={hiddenFileInput}
+            ref={hiddenFileInput}
             accept="image/*"
             style={{ display: "none" }}
+            onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
           />
         </div>
         <div>
@@ -45,4 +111,4 @@ const uploadModal = () => {
   )
 }
 
-export default uploadModal
+export default UploadModal
