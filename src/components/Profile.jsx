@@ -1,33 +1,26 @@
 import React from 'react';
-import './Profile.css';
 import { Link } from 'react-router-dom'
 
 
-const Profile = ({username,name,}) => {
+const Profile = ({username,name,con}) => {
 
   return (
-       <div className="profile">
-      {/* Profile frame */}
-      <div className="profile-frame">
-        {/* profile-pic */}
-        <div className="profile-pic">
-        {/* {img ? (
-          <img src={`${img}`}/>
-        ) : ( */}
-          <img src='picture2.jpg'/>
-        {/* )} */}
-        </div>
-        {/* profile-data */}
-        <div className="profile-data">
+       <div className={con}>  
+       {/* <div> */}
+  <img src='https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png'/>  
         <div>
         <Link to={`/profile/${username}`}>
-        <h1>{username}</h1>
+        <div className='username'>
+          {username}
+          </div>
         </Link>
-        <h1>{name}</h1>
-      </div>
-
+        <div className='name'>
+          {name}
         </div>
       </div>
+
+        
+     
     </div>
     
   )
