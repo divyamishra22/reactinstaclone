@@ -1,6 +1,8 @@
-import React,{useState, useEffect,
+import React,{useState, useEffect,useCallback
   //  useMemo
   } from 'react'
+  import { useUpload } from '../hooks/upload';
+  import api from '../api/index1';
 import './CreatePost.css'
 
 const CreatePost = () => {
@@ -9,10 +11,12 @@ const CreatePost = () => {
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
 
+
+
   useEffect(() => {
 
     // saving post to mongodb
-    if (url) {
+    if (url ) {
 
       fetch("http://localhost:3000/posts/upload", {
         method: "post",
@@ -21,7 +25,7 @@ const CreatePost = () => {
           "Authorization": "Bearer " + localStorage.getItem("jwt")
         },
         body: JSON.stringify({
-          post:body,
+          body,
           image: url
         })
       }).then(res => res.json())
@@ -36,9 +40,15 @@ const CreatePost = () => {
           }
         })
         .catch(err => console.log(err))
+ 
     }
+    
+  }, 
+  [url])
 
-  }, [url])
+  
+
+
 
   const postDetails = () => {
 

@@ -71,15 +71,14 @@ const Main = ({ feed}) => {
   return (
     <>
     <div className='card'>
-       <Profile
+      <div className='card-header'>
+      <Profile 
           username={feed.posts.user.username}
           name={feed.posts.user.name}
-        />
-        <div>
+        />    
         <FiMoreHorizontal size={20}  onClick={() => setModalOpen(true)}/>
-       { modalOpen && <Modal isAuthor={feed.isAuthor} post={feed.posts} setModalOpen={setModalOpen}/>}
-         </div>
-         
+       { modalOpen && <Modal isAuthor={feed.isAuthor} post={feed.posts} setModalOpen={setModalOpen}/>}     
+      </div>   
         {/* { <Modal isAuthor={feed.isAuthor} post={feed.posts} />} */}
          <div className="card-image">
          <img src={feed.posts.image} alt="" />
@@ -88,7 +87,7 @@ const Main = ({ feed}) => {
         ( <FiHeart onClick={togglelike} size={18}/>)
   }
 
-<Link to={`/post/${postid}`}>
+        <Link to={`/post/${postid}`}>
           <FaComment size={18}  />
         </Link>
           
