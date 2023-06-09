@@ -1,0 +1,38 @@
+
+.centered{ 
+    position:relative ; 
+    width:20rem; 
+}
+
+.modal {
+   position: absolute;
+   top: 50%;
+   right:50%;
+   width: 20rem;
+   height: auto;
+   background-color: white;
+   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+   border-radius: .5rem;
+   padding: 20px;
+  
+  }
+
+  
+
+.modalHeader li{
+   list-style: none;
+   padding: 20px;
+   border-bottom: 1px solid #e6e6e6;
+   border-radius: 10px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.modalHeader li a{
+   font-weight: 400;
+   text-decoration: none;
+   color: #2c2c2c;
+}
