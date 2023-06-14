@@ -1,9 +1,13 @@
 import { createContext, useContext,useCallback,  useState } from 'react';
 import api from '../api/index1';
+import { useNavigate } from "react-router-dom";
+
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState(() => {
    
@@ -69,6 +73,8 @@ function signOut() {
   setData({
     //  token: null,
      user: null });
+     localStorage.clear();
+     navigate("/SignIn");
 }
 
 
