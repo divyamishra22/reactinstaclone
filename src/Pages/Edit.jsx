@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useMemo} from 'react'
 import { useAuth } from '../hooks/auth';
-
+import './Edit.css';
 
 const Edit = () => {
     const { user, editUser,} = useAuth();
@@ -35,33 +35,27 @@ const Edit = () => {
       };
 
   return (
-    <div className='edituser' >
-        <div>
+    <div className='containerform'>
+    <div className='formcontainer'>
+    <form >
+    <span>Edit your profile</span>
         <input type='text' name="username" placeholder="Username" value={userData.username} onChange={handleChange}/>
-        </div>
-
-        <div>
+ 
         <input type='text' name="name" placeholder="Name" value={userData.name} onChange={handleChange}/>
-        </div>
-
-       <div> 
+  
         <input name="password" type="password" placeholder="Password" value={userData.password}
          onChange={handleChange}/>
-        </div>
        
-       <div>
         <input name="email" placeholder="Email" type="email" value={userData.email}
                 onChange={handleChange}/>
-                </div>
-     <div> 
+              
         <input name="bio" placeholder="Bio" value={userData.bio} onChange={handleChange}/>
-     </div>
-
-       <div> 
+     
          <p>To persist changes you must login again</p>
-         </div>
-      
+        
         <button type="submit"onClick={handleSubmit} >Update</button>
+    </form>
+    </div>
     </div>
   )
 }
