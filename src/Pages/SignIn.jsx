@@ -1,10 +1,12 @@
 import React ,{useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './SignIn.css'
 import {useAuth}  from '../hooks/auth'
+import logo from '../assets/logo.png';
 
 const SignIn = () => {
 
+  const navigate = useNavigate();
   const [email, setemail] = useState("")
   const [password, setpassword] = useState("")
   const {SignIn, } = useAuth();
@@ -17,6 +19,7 @@ const SignIn = () => {
     }
     else {
         SignIn({email, password})
+        navigate("/Home")
     }
     setemail('');
     setpassword('');
@@ -24,25 +27,26 @@ const SignIn = () => {
 
   return (
     <div className='signin'>
-      <div>
+      <div className='signincontainer'>
         
         <div className='loginform'>
-          <div>
+        <img src={logo} style={{width:'230px'}} alt="logo" />
+        <span style={{marginBottom: '20px'}}>Log in to watch photos and videos </span>
           <input type="name" name="email" id="email" value={email} placeholder='Email'
            onChange={(e) => { setemail(e.target.value) }}/>
-        </div>
-        <div>
+       
           <input type="password" name="password" id="password"   value={password} placeholder='Password'
            onChange={(e) => { setpassword(e.target.value) }}/>
-        </div>
+       
         <button type='submit' id="login-btn"  onClick={handleSubmit} >LogIn</button>
-      </div>
+        </div>
       
-      <div className="loginform2">
-          Don't have an account ?
+      <div className="loginform2" >
+          <p>Don't have an account ?
           <Link to="/signup">
-            <span style={{ color: "blue", cursor: "pointer" }}>Sign Up</span>
+            Sign Up
           </Link>
+          </p>
         </div>
       </div>
     </div>
