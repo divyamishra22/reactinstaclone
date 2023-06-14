@@ -35,6 +35,7 @@ const Home = () => {
       <div className='aside'>
     <div className='containerowner'>
      <Profile key={user.id}
+     img={user.avatar}
      username={user.username}
      name={user.name}
      con= 'container1'/>
@@ -43,7 +44,7 @@ const Home = () => {
        {follow && 
             follow.map((follows) => (
         <Profile 
-                // img={user.avatar}
+                img={follows.userTo.avatar}
                 con= 'container1'
                 key={follows.userTo.id}
                 username={follows.userTo.username}
