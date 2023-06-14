@@ -1,53 +1,62 @@
 import { createContext, useContext, useCallback, useState } from 'react';
-import api from '../api/index1';
+// import api from '../api/index1';
 
 
 const UploadContext = createContext();
 
 
 export function UploadProvider({ children }) {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-  
+   
+  const [profilepic , setprofilepic] = useState("");
+ 
 
 
-    const uploadPhotoAction = useCallback(async (dataImage) => {
-      try {
-        const formData = new FormData();
-        formData.append('image', dataImage.image);
-        formData.append('text', dataImage.body);
-        const res = await api.post('http://localhost:3000/posts/upload', {formData},
-        {
-          headers:{
-            "Authorization": "Bearer " + localStorage.getItem("jwt")   
-          }
-        }
-        
-        );
-       console.log(res)
-        if (res.status === 201) {
-          setData(res);
-        }
-      } catch (err) {
-        if (err.response.status === 500) {
-          setError(true);
-        }
-      } finally {
-        setLoading(false);
-      }
-    }, []);
-  
-    const resetValues = useCallback(() => {
-      setData(null);
-      setLoading(false);
-      setError(false);
-    }, []);
+  const updatepic = (url) => {
+    // saving post to mongodb
+    fetch("http://localhost:3000/user/avatar", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify({
+        avavtar: url,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setprofilepic(data.avatar);
+         alert('login again to view update')
+        // window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+
+  const removeprofile = ()=>{
+    
+    fetch("http://localhost:3000/user/avatar", {
+      method: "delete",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+         alert(' succesfully deleted login in again to view');
+        // window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  }
+
   
     return (
     
       <UploadContext.Provider
-        value={{ data, loading, error, uploadPhotoAction, resetValues }}
+        value={{ updatepic, profilepic , removeprofile }}
       >
         {children}
       </UploadContext.Provider>
