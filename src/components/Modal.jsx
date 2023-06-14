@@ -3,7 +3,7 @@ import { useFollow } from '../hooks/follow';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import { useFeed } from '../hooks/feed';
-
+import './Modal.css'
 
 
 const Modal = ({isAuthor, post,
@@ -47,10 +47,10 @@ const   UnfollowUser = useCallback(()=>{
 
   return (
     <>
-     <FiMoreHorizontal size={20}  onClick={toggleModal}/>
-    <div>
-       <div className="darkBg" >
-      <div className="centered">
+     {/* <FiMoreHorizontal size={20}  onClick={toggleModal}/> */}
+    
+       
+        <div className='centered'>
         <div className="modal">
           {isAuthor? (<div className="modalHeader">
           <li>
@@ -76,8 +76,7 @@ const   UnfollowUser = useCallback(()=>{
           </div>)}
     </div>
     </div>
-    </div>
-    </div>
+   
     </>
   )
 }
