@@ -5,6 +5,9 @@ import {
 import { useFollow } from '../hooks/follow';
     //  import api from '../api/index1';
   import UploadModal from '../components/uploadModal'; 
+  import './Profile.css'
+ 
+
 
 const Profile = () => {
     const { username } = useParams();
@@ -16,6 +19,9 @@ const Profile = () => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [changePic, setChangePic] = useState(false)
+
+  
+
 
 
    
@@ -86,25 +92,27 @@ const Profile = () => {
     <div className='profile'>
         <div className='profile-frame'>
             <div className='profile-pic'>
-            {/* <img src={user.Photo ? user.Photo : picLink} alt="" /> */}
-            <img src="https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png" 
-             onClick={changeprofile}/>
+           {user.avatar ? (<img src={user.avatar} onClick={changeprofile}/>):
+           ( <img src="https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png" 
+             onClick={changeprofile}/>)}
               {
         changePic &&
         <UploadModal changeprofile={changeprofile} />
       }
             </div>
+            <div>
             <div className='profile-data'>
             <h1>{user.name}</h1>
+            {/* <p>{user.bio}</p> */}
             {isProfile ? (
              <Link to={`/edit/${username}`}>
              <button type='submit' id='editbtn'>Edit Profile</button> 
            </Link> 
           
             ) : isFollow ? (
-              <button onClick={follow}>{loading?'loading..': 'Following'}</button>
+              <button className='follow' onClick={follow}>{loading?'loading..': 'Following'}</button>
             ) : (
-              <button onClick={follow}>{loading? 'loading..': 'Follow'}</button>
+              <button className='follow' onClick={follow}>{loading? 'loading..': 'Follow'}</button>
                 )}
             </div>
             <div className='profile-info'>
@@ -112,22 +120,27 @@ const Profile = () => {
             <p>{count.userFollowersCount} followers</p>
             <p>{count.userFollowingCount} following</p>
             </div>
+            </div>
+            <div className='Description'>
+            <p>{user.name}</p>
+            <span>{user.bio}</span>
+          </div>
         </div>
       
       {isProfile || isFollow? (
         <>
-      <hr
+     <hr
         style={{
-          width: "90%",
+          width: "100%",
 
           opacity: "0.8",
           margin: "25px auto",
-        }}/>
+        }}/> 
          <div className="gallery">
          {posts.length > 0 &&
             posts.map((photo) => (
               <Link to={`/post/${photo.id}`}>
-                <img src={photo.image} />
+                <img  className='photos' src={photo.image} />
               </Link>
             ))}
       </div>
