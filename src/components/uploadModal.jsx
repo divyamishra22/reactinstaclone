@@ -1,10 +1,13 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useEffect,  useRef} from 'react'
+import './uploadModal.css'
+import { useUpload } from '../hooks/upload';
 
 const UploadModal = ({changeprofile}) => {
     const hiddenFileInput = useRef(null);
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-
+   
+    const {updatepic, removeprofile} = useUpload();
 
  // posting image to cloudinary
  const postDetails = () => {
@@ -22,54 +25,44 @@ const UploadModal = ({changeprofile}) => {
     console.log(url);
   };
 
-  const postPic = () => {
-    // saving post to mongodb
-    fetch("", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("jwt"),
-      },
-      body: JSON.stringify({
-        pic: url,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        changeprofile();
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
-  };
+  
+  const removephoto = () =>{
+     removeprofile();
+  }
 
+
+  const postPic =()=>{
+    updatepic(url);
+    changeprofile();
+  }
 
     const handleClick = () => {
         hiddenFileInput.current.click();
       };
     
 
-    //   useEffect(() => {
-    //     if (image) {
-    //       postDetails();
-    //     }
-    //   }, [image]);
+      useEffect(() => {
+        if (image) {
+          postDetails();
+        }
+      }, [image]);
 
-    //   useEffect(() => {
-    //     if (url) {
-    //       postPic();
-    //     }
-    //   }, [url]);
+      useEffect(() => {
+        if (url) {
+          postPic();
+        }
+      }, [url]);
 
    
 
     
   return (
-    <div  className='profile-pic'>
-        <div className='change-pic'>
+    <div  className='profilepic '>
+      <div className='profileimage'>
+        <div className='change-pic '>
         <h2>Change Profile Photo</h2>
         </div>
-        <div>
+        <div style={{ borderTop: "1px solid #00000030" }}>
         <button
             className="upload-btn"
             style={{ color: "#1EA1F7" }}
@@ -87,8 +80,8 @@ const UploadModal = ({changeprofile}) => {
               }}
           />
         </div>
-        <div>
-        <button className="upload-btn" style={{ color: "#ED4956" }}>
+        <div style={{ borderTop: "1px solid #00000030" }} >
+        <button className="upload-btn" style={{ color: "#ED4956" }} onClick={removephoto}>
             {" "}
             Remove Current Photo
           </button>
@@ -106,7 +99,7 @@ const UploadModal = ({changeprofile}) => {
             cancel
           </button>
         </div>
-      
+        </div>
     </div>
   )
 }
