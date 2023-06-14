@@ -16,7 +16,7 @@ const Profile = ({img, username,name,con}) => {
   (<img src= {avatar}/> )}
         <div>
           <div className='names'>
-        <Link to={`/profile/${username}`} >
+        <Link to={`/profile/${username}`}  style={{color: 'black' , fontWeight: '400'}}>
         <div className='username'>
           {username}
           </div>
