@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react'
-import './Home.css'
+import './Main.css'
 import Profile from '../components/Profile';
 import Modal from './Modal'
 import { FaHeart, FaComment } from 'react-icons/fa';
@@ -19,6 +19,8 @@ const Main = ({ feed}) => {
   const [comment, setcomment] = useState('');
   const [comments, setcomments] = useState(feed.posts.comments);
   const [show, setShow] = useState(false);
+ 
+
  
 
   const togglelike = useCallback( 
@@ -72,30 +74,32 @@ const Main = ({ feed}) => {
     <>
     <div className='card'>
       <div className='card-header'>
-      <Profile 
+      <Profile con='container2'
+          img= {feed.posts.user.avatar}
           username={feed.posts.user.username}
           name={feed.posts.user.name}
         />    
         <FiMoreHorizontal size={20}  onClick={() => setModalOpen(true)}/>
        { modalOpen && <Modal isAuthor={feed.isAuthor} post={feed.posts} setModalOpen={setModalOpen}/>}     
       </div>   
-        {/* { <Modal isAuthor={feed.isAuthor} post={feed.posts} />} */}
          <div className="card-image">
          <img src={feed.posts.image} alt="" />
-         <div>
-        {like? (<FaHeart onClick={togglelike}/>):
-        ( <FiHeart onClick={togglelike} size={18}/>)
-  }
+         <div className='content'>
+          <div className='card-icons'>
+        {like? (<FaHeart onClick={togglelike} size={18}  style={{cursor:'pointer',
+         color: '#fc4850', marginRight: 10 }}/>):
+        ( <FiHeart onClick={togglelike} size={18} style={{ cursor: 'pointer',marginRight: 10 }}/>)}
 
         <Link to={`/post/${postid}`}>
-          <FaComment size={18}  />
+          <FaComment size={18} style={{cursor:'pointer', color: 'black' }} />
         </Link>
+        </div>
           
            <div className='card-details'>
-              <p>
+              <div>
                 {feed.posts.user.username}
-              <span>{feed.posts.post}</span>
-                 </p>
+              {/* <span>{feed.posts.post}</span> */}
+                 </div>
                  <Link to={`/post/${postid}`}
           style={{
             fontWeight: 'bold',
@@ -110,7 +114,7 @@ const Main = ({ feed}) => {
                  </div>  
 
               <p
-                style={{ fontWeight: "bold", cursor: "pointer" }}
+                style={{cursor: "pointer", textAlign:'left' }}
                 onClick={() => {
                   setShow(true);
                 }}
@@ -121,16 +125,22 @@ const Main = ({ feed}) => {
               </p>
               <CommentsList comments={comments} show={show}/>
          </div>
-           <div>
+           <div className='card-comments'>
          <form onSubmit={handleSubmit}>
           <input
             type="text"
             value={comment}
             onChange={(e) => setcomment(e.target.value)}
             placeholder="Add new Comment"
+            style={{height: '60px',
+              width: '100%',
+              border: 'none',
+              font: '400 13.333px Roboto',
+              outline: '0px',
+              color: '#262626',}}
           />
-          <button type="submit" >
-            Publish
+          <button type="submit" id='postbtn' >
+            Post
           </button>
         </form>
 
