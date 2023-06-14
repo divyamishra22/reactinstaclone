@@ -1,8 +1,18 @@
 .createpost{
+   position:relative;
+    
+    
+}
+
+
+.sharepost{
     max-width: 500px;
     margin: 10px auto;
     border: 1px solid rgb(173, 173, 173);
     border-radius: 5px;
+    position: absolute;
+    top:20%;
+    left: 40%;
 }
 
 .main-div{
@@ -23,6 +33,24 @@
 .details{
     border-top: 1px solid rgb(173, 173, 173) ;
 }
+
+#output{
+    width: 300px;
+    border: none;
+    outline: none;
+    margin-top: 5px;
+}
+
+.userphoto img{
+    width: 40px;
+    height:40px;
+    border-radius: 800px;
+}
+
+.card-header{
+    gap: 6px;
+}
+
 
 textarea{
     width: 90%;

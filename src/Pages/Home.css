@@ -25,6 +25,11 @@ justify-content: space-evenly;
  
 }
 
+/* .containerfeeds{
+  width: 100%;
+  max-width: 614px;
+} */
+
 .container1
 {
 display: flex;

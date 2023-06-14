@@ -1,47 +1,80 @@
-.signup{
- background-image: url("https://unsplash.com/photos/CxBx_J3yp9g");
- border: 2px solid rgba(128, 128, 128, 0.179);
- position:absolute;
- top :20%;
- left: 40%;
- padding: 30px;
- border-radius: 5px;
- background-color: rgba(128, 128, 128, 0.095);
- width: 300px;
- height: 300px;
- 
+
+
+.form0{
+    height: 100vh;
+    width: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 480px;
+   
 }
 
-input{
-    padding: 5px;
-    margin: 3px 3px;
-    font-size: 16px;
+.form1{
+   
     width: 100%;
-   box-sizing: border-box; 
+    height: auto;
 }
 
-p{
-    font-size: 16px;
-    margin: 18px 0px;
-    font-weight: 85px;
+.form1 form{
+    padding: 30px;
+    background: #fff;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#submit-btn{
-    background-color: rgba(0, 0, 255, 0.429);
-    border-radius: 10px;
-    color: white;
-    margin-top: 8px;
-    font-weight: bold;
+.form1 form input{
+    width: 100%;
+    margin-bottom: 7px;
+    padding: 10px 8px;
+    font: 400 13.333px Arial;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+}
+
+.form1 form button{
+    width: 100%;
+    padding: 9px 9px;
+    background-color: #3897f0;
+    border: 1px solid #3897f0;
+    border-radius: 4px;
+    margin-top: 20px;
+    font: bold 13.333px Arial;
+    color: #fff;
     cursor: pointer;
-    width: 100%;
-    padding: 5px;
+    outline: 0px;
+    &:hover {
+      background-color: #38ff;
+    }
+}
+
+.form1 form span{
+    text-align: center;
+    color: #999;
+    font-size: 20px;
+    margin: 15px 0;
+    &.footer {
+      font-size: 12px;
+    }
 }
 
 .form3{
-    margin-top: 500px;
+    background: #fff;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: center;
 }
 
-span{
-    color: rgba(0, 0, 255, 0.353)
-
+.form3 p{
+    color: #999;
+    font-size: 15px;
 }

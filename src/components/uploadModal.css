@@ -1,0 +1,25 @@
+.profilepic{
+    position:relative;
+    z-index: 2;
+}
+
+.profileimage{
+    position: absolute;
+    top:200%;
+    left: 80%;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+    border-radius: .5rem;
+    padding: 20px;
+}
+
+.profileimage button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bolder;
+  
+    font-size: 15px;
+   
+}

@@ -1,0 +1,113 @@
+.card{
+    max-width: 500px;
+    margin: 25px auto;
+    border: 1px solid rgba(128, 128, 128, 0.337);
+}
+
+.card-header{
+    display:flex;
+    /* justify-content: space-between; */
+    padding: 16px;
+    align-items: center;
+    text-align: left;
+    
+}
+
+
+.card-pic img{
+    width: 30px;
+    border-radius: 30px;
+    height: auto;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.card-image img{
+    width: 100%;
+}
+
+.card-content{
+    text-align: left;
+    line-height: 4px;
+    padding: 3px 10px;
+    border-bottom: 1px solid rgb(173, 173, 173)
+}
+
+.add-comment{
+    display: flex;
+    align-items: center;
+}
+
+.add-comment input{
+    margin: 0;
+    outline: none;
+    border: none;
+    padding: 10px 
+}
+
+.submit{
+    border: none;
+    background-color: none;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #339ce3;
+}
+
+.container2
+{
+width:100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 30px;
+
+}
+
+.container2>img{
+  width: 100px;
+  height:100px;
+  border-radius: 800px; 
+}
+
+.card-icons{
+    display: flex;
+    align-items: center;
+    padding: 4px 16px;
+}
+
+.card-comments{
+    width: 100%;
+    border-top: 1px solid #f6f6f6;
+    padding: 2px 16px;
+}
+
+.card-comments form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#postbtn{
+    background-color: transparent;
+      color: #3897f0;
+      font: bold 13px 'Roboto';
+      border: none;
+      outline: 0px;
+      cursor: pointer;
+      letter-spacing: 0.4px;
+}
+
+.card-details {
+    font: 400 14px 'Roboto';
+    padding: 4px 16px;
+    letter-spacing: 0.3px;
+    text-align: left;
+    
+}
+
+.content p> a{
+    text-decoration: none;
+    color: black;
+    font-weight: 400 ;
+}
+
