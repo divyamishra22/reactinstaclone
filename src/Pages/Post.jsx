@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
 import api from '../api/index1';
 import Profile from '../components/Profile';
+import { FaHeart, } from 'react-icons/fa';
 // import TimeAgo from 'react-timeago';
-
+import './Post.css'
 
 const Post = () => {
   const { postId } = useParams();
@@ -29,20 +30,20 @@ const Post = () => {
   }, [postId]);
 
   return (
-    <div className='container'>
+    <div className='containerposts'>
       <div className='containerPhoto'>
         <img src={post.image}/>
       </div>
       <div className='containerPost'>
         <div className='header'>
-        <Profile username={user.username}/>
-        <p style={{ margin: '5px 0' }}>{post.post}</p>
+        <Profile username={user.username} con='container3'/>
+        {/* <p style={{ margin: '5px 0' }}>{post.post}</p> */}
         </div>
         <div className='containerComments'>
         {comments.length > 0 ? (
               comments.map((comment) => (
-                <div>
-                  <Profile
+                <div className='comment'>
+                  <Profile con='container3'
                     username={comment.user.username}
                   />
                   <p>{comment.body}</p>
@@ -58,8 +59,8 @@ const Post = () => {
               <p>No comments </p>
             )}
         </div>
-        <div className='likes'>
-      { post.likes? (<span>♥ {post.likes.length} Likes</span>):("No Likes yet") }
+        <div className='likes' style={{textAlign: 'left',}}>
+      { post.likes? (<span><FaHeart style={{color: 'red'}}/>  {post.likes.length} Likes</span>):("No Likes yet") }
         </div>
       </div>
       
