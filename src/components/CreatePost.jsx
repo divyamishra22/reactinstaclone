@@ -1,7 +1,7 @@
 import React,{useState, useEffect,useCallback
   //  useMemo
   } from 'react'
-  import { useUpload } from '../hooks/upload';
+  import { useAuth } from '../hooks/auth';
   import api from '../api/index1';
 import './CreatePost.css'
 
@@ -11,7 +11,7 @@ const CreatePost = () => {
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
 
-
+  const {user} = useAuth();
 
   useEffect(() => {
 
@@ -77,6 +77,7 @@ const CreatePost = () => {
 
 
   return (
+    <div className='sharepost'>
     <div className='createpost'>
       <div className='post-header'>
         <h4 style={{margin: "3px auto"}}> Create a New Post</h4>
@@ -97,16 +98,17 @@ const CreatePost = () => {
       {/* details */}
       <div className="details">
         <div className="card-header">
-          {/* <div className="card-pic">
+          <div className="userphoto">
             <img
-              src="picture1.jpg"/>
-          </div> */}
-          {/* <h5>Raha</h5> */}
+              src= {user.avatar}/>
+          </div> 
+          <h5>{user.name}</h5>
         </div>
-        <textarea  type="text" placeholder="Write a caption...." value={body}
+         {/* <textarea  type="text" placeholder="Write a caption...." value={body}
         onChange={(e) => {
-          setBody(e.target.value)}}></textarea>
+          setBody(e.target.value)}}></textarea> */}
         </div>
+    </div>
     </div>
   )
 }
