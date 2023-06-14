@@ -2,26 +2,30 @@ import React from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/auth'
-import { FaSearch, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaSearch,  FaUser } from 'react-icons/fa';
+
+
+
 const Navbar = () => {
 
+
+
 const {user,signOut} = useAuth();
+
   return (
     <>
+    <div className='wrapper'>
     <div className='navbar'>
      <ul className='nav-menu'>
-      <Link to="SignUp">
+      {/* <Link to="SignUp">
       <li>SignUp</li>
       </Link>
 
       <Link to="SignIn">
       <li>SignIn</li>
-      </Link>
-
-      {/* <Link to="/profile/:username">
-      <li>Profile</li>
       </Link> */}
 
+     
       <Link to="/Home">
       <li>Home</li>
       </Link>
@@ -31,24 +35,23 @@ const {user,signOut} = useAuth();
       </Link>
 
       <Link to="/Search">
-        <li>Search</li>
+        <li><FaSearch color="#ccc" size={15} /> Search</li>
       </Link>
 
       <Link  to={`/profile/${user && user.username}`}>
-        <li>Profile</li>
+        <li>  <FaUser color="#222" size={25} /> Profile</li>
+       
       </Link>
-
-     
-      {/* <FaSignOutAlt onClick={signOut}  /> */}
-     
-        <button onClick={signOut}>LogOut</button>
+        <button id='btn' onClick={signOut}>LogOut</button>
       
 
 
      </ul>
     </div>
+    </div>
     </>
   )
+    
 }
 
 export default Navbar
