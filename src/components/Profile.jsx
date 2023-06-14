@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import './Profile.css'
-
+import avatar from '../assets/logo.png';
 
 const Profile = ({img, username,name,con}) => {
 
@@ -13,7 +13,7 @@ const Profile = ({img, username,name,con}) => {
        <div className={con}>  
        
        {img?( <img src={img}/>):
-  (<img src='https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png'/> )}
+  (<img src= {avatar}/> )}
         <div>
           <div className='names'>
         <Link to={`/profile/${username}`} >

@@ -6,7 +6,7 @@ import { useFollow } from '../hooks/follow';
     //  import api from '../api/index1';
   import UploadModal from '../components/uploadModal'; 
   import './Profile.css'
- 
+  import avatar from '../assets/logo.png';
 
 
 const Profile = () => {
@@ -93,7 +93,7 @@ const Profile = () => {
         <div className='profile-frame'>
             <div className='profile-pic'>
            {user.avatar ? (<img src={user.avatar} onClick={changeprofile}/>):
-           ( <img src="https://raw.githubusercontent.com/OLucho/instagram-clone/master/frontend/src/assets/avatar.png" 
+           ( <img src={avatar} 
              onClick={changeprofile}/>)}
               {
         changePic &&
