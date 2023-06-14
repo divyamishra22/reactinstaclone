@@ -6,7 +6,7 @@ import { useFollow } from '../hooks/follow';
     //  import api from '../api/index1';
   import UploadModal from '../components/uploadModal'; 
   import './Profile.css'
-  import avatar from '../assets/logo.png';
+  import avatar from '../assets/avatar.png';
 
 
 const Profile = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import './Profile.css'
-import avatar from '../assets/logo.png';
+import avatar from '../assets/avatar.png';
 
 const Profile = ({img, username,name,con}) => {
 
