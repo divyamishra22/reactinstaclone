@@ -1,6 +1,7 @@
 
 import React,{useState} from 'react';
 import Profile from './Profile';
+import './Searchbar.css'
 
 const Searchbar = () => {
     const [term, setTerm] = useState('');
@@ -47,21 +48,25 @@ const Searchbar = () => {
     <div className='searchclass'>
 
         <div className='searchinput'>
-        <input type="text" name="searchtext" id="searchtext" value={term} placeholder='Serach by Username..Name'
+        <input type="text" name="searchtext" id="searchtext" value={term} placeholder='Search by Username..Name'
            onChange={(e) => { setTerm(e.target.value) }}/>
          <button type="submit" id="submit-btn" onClick={handleSubmit}>Search</button>
+        
         </div>
-
-        <div className='profile'>
-        {users.length > 0 ? (
+         <hr/>
+        <div className='profilesearch'>
+        {users.length   > 0 ? (
             users.map((user) => (
         <Profile 
-                // img={user.avatar}
+                img={user.avatar}
+                con ='container4'
                 key={user.id}
                 username={user.username}
                 name={user.name}/>
             ))): (
+             
             <p>No Results </p>
+          
             )}
         </div>
         
