@@ -79,11 +79,12 @@ const Profile = () => {
 
 
   const changeprofile = () => {
-    if (changePic) {
+    if(isProfile)
+   { if (changePic) {
       setChangePic(false)
     } else {
       setChangePic(true)
-    }
+    }}
   }
 
 
@@ -92,11 +93,11 @@ const Profile = () => {
     <div className='profile'>
         <div className='profile-frame'>
             <div className='profile-pic'>
-           {user.avatar ? (<img src={user.avatar} onClick={changeprofile}/>):
+           {user.avatar  ? (<img src={user.avatar} onClick={changeprofile}/>):
            ( <img src={avatar} 
              onClick={changeprofile}/>)}
               {
-        changePic &&
+        changePic && 
         <UploadModal changeprofile={changeprofile} />
       }
             </div>
