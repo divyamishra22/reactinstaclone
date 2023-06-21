@@ -7,6 +7,7 @@ import { useFollow } from '../hooks/follow';
   import UploadModal from '../components/uploadModal'; 
   import './Profile.css'
   import avatar from '../assets/avatar.png';
+  import Post  from './Post'
 
 
 const Profile = () => {
@@ -21,7 +22,7 @@ const Profile = () => {
     const [changePic, setChangePic] = useState(false)
 
   
-
+    const [modalopen, setModalopen] = useState(false);
 
 
    
@@ -90,7 +91,7 @@ const Profile = () => {
 
 
   return (
-    <div className='profile'>
+    <div className='profile' style={{position: 'relative'}}>
         <div className='profile-frame'>
             <div className='profile-pic'>
            {user.avatar  ? (<img src={user.avatar} onClick={changeprofile}/>):
@@ -140,10 +141,17 @@ const Profile = () => {
          <div className="gallery">
          {posts.length > 0 &&
             posts.map((photo) => (
-              <Link to={`/post/${photo.id}`}>
-                <img  className='photos' src={photo.image} />
-              </Link>
+              <>
+               {/* <Link to={`/post/${photo.id}`}> */}
+                <img  className='photos' src={photo.image} 
+                onClick={() => setModalopen(true)}  />
+              {modalopen && <Post setModalopen={setModalopen} postId={photo.id}
+              />}
+
+               {/* </Link> */}
+              </>
             ))}
+          
       </div>
       </>): (" ")}
       {/* {
