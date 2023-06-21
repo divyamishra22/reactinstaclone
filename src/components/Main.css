@@ -20,10 +20,14 @@
     height: auto;
     object-fit: contain;
     padding: 5px;
+
+    
+    
 }
 
 .card-image img{
     width: 100%;
+   
 }
 
 .card-content{
@@ -61,12 +65,18 @@ flex-direction: row;
 align-items: center;
 gap: 30px;
 
+
+
 }
 
 .container2>img{
   width: 100px;
   height:100px;
   border-radius: 800px; 
+  @media (max-width: 640px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .card-icons{

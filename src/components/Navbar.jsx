@@ -37,13 +37,13 @@ const {user,signOut} = useAuth();
       </Link>
 
       {/* <Link to="/Search"> */}
-        <li onClick={() => setModalOpen(true)} style={{cursor: 'pointer'}}>
+        <li id='b' onClick={() => setModalOpen(true)} style={{cursor: 'pointer'}}>
           <FaSearch color="#ccc" size={15} /> Search</li>
       {/* </Link> */}
       { modalOpen && <Searchbar setModalOpen={setModalOpen}/>}     
 
       <Link  to={`/profile/${user && user.username}`}>
-        <li>  <FaUser color="#222" size={25} /> Profile</li>
+        <li  id='b'  style={{cursor: 'pointer'}}>  <FaUser color="#222" size={25} /> Profile</li>
        
       </Link>
         <button id='btn' onClick={signOut}>LogOut</button>

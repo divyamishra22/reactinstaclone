@@ -11,12 +11,27 @@
    position:fixed;
     width:20%;
    height: 100%;
+
+   @media (max-width: 640px) {
+   
+   position: absolute;
+   width: 100%;
+  bottom: 0;
+  
+
+} 
    
 }
 
 .nav-menu{
     display: flex;
     flex-direction: column;
+    @media (max-width: 640px) {
+       flex-direction: row;
+       margin-bottom: 0px;
+       border: 1px solid black;
+      
+    }
 }
 
 .nav-menu li{
@@ -25,6 +40,12 @@
     color: black;
     font-weight: 400;
     line-height: 160px;
+    @media (max-width: 640px) {
+      
+    line-height: 2px;
+    padding: 8px 18px;
+    
+    }
 }
 
 #btn{
@@ -35,4 +56,11 @@
        /* background-color: rgba(128, 128, 128, 0.137); */
        border: transparent;
       }
+}
+
+#b{
+    @media (max-width: 640px) {
+    display: flex;
+    flex-direction: row;
+    }
 }
