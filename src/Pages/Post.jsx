@@ -5,9 +5,10 @@ import Profile from '../components/Profile';
 import { FaHeart, } from 'react-icons/fa';
 // import TimeAgo from 'react-timeago';
 import './Post.css'
+import { BsXLg } from "react-icons/bs";
 
-const Post = () => {
-  const { postId } = useParams();
+const Post = ({setModalopen, postId}) => {
+  // const { postId } = useParams();
   const [post , setPost] = useState('')
   const [comments, setcomments] = useState('')
   const [user, setUser] = useState('')
@@ -30,11 +31,15 @@ const Post = () => {
   }, [postId]);
 
   return (
-    <div className='containerposts'>
+    // <div classNmae='post'>
+    <div className='containerposts' >
       <div className='containerPhoto'>
         <img src={post.image}/>
       </div>
       <div className='containerPost'>
+      <div className='icon' style={{textAlign: 'right', marginRight:'8px', }}>
+       <BsXLg  style={{cursor:'pointer'}}  onClick={() => setModalopen(false)}/>
+       </div>
         <div className='header'>
         <Profile username={user.username} con='container3'/>
         {/* <p style={{ margin: '5px 0' }}>{post.post}</p> */}
@@ -63,8 +68,8 @@ const Post = () => {
       { post.likes? (<span><FaHeart style={{color: 'red'}}/>  {post.likes.length} Likes</span>):("No Likes yet") }
         </div>
       </div>
-      
-    </div>
+      </div>
+    // </div>
   )
 }
 
