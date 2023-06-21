@@ -45,7 +45,7 @@ const SignUp = () => {
       })
      
       // setMyData(res.data);
-      alert("sucessfully signed");
+     
       navigate("/SignIn")
       console.log(res);
     } catch (error) {
