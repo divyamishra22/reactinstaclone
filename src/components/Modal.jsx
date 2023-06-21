@@ -54,7 +54,9 @@ const   UnfollowUser = useCallback(()=>{
         <div className="modal">
           {isAuthor? (<div className="modalHeader">
           <li>
-              <Link to={`/post/${post.id}`}>Go to Publication</Link>
+              <Link to={`/post/${post.id}`}>
+                Go to Publication
+                </Link>
             </li>
             <li className="red" 
             onClick={()=>deletePost()}

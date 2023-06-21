@@ -40,7 +40,7 @@ function App() {
       <Route path="/profile/:username" element={<Profile/>}></Route>
       <Route path="/edit/:username" element={<Edit/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
-      <Route path="/post/:postId" element={<Post/>}></Route>
+      {/* <Route path="/post/:postId" element={<Post/>}></Route> */}
       <Route path="/CreatePost" element={<CreatePost/>}></Route>
       <Route path="/Search" element={<Searchbar/>}></Route>
       </Route>

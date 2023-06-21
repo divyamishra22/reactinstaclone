@@ -8,7 +8,7 @@ import { FiMoreHorizontal } from 'react-icons/fi';
 import api from '../api/index1';
 import CommentsList from './CommentsList';
 import { Link } from 'react-router-dom'
-
+import Post from '../Pages/Post'
 
 
 const Main = ({ feed}) => {
@@ -19,7 +19,7 @@ const Main = ({ feed}) => {
   const [comment, setcomment] = useState('');
   const [comments, setcomments] = useState(feed.posts.comments);
   const [show, setShow] = useState(false);
- 
+  const [modalopen, setModalopen] = useState(false);
 
  
 
@@ -72,7 +72,10 @@ const Main = ({ feed}) => {
 
   return (
     <>
-    <div className='card'>
+    <div className='card' style={{position: 'relative'}}>
+   
+    { modalopen && <Post setModalopen={setModalopen} postId={feed.posts.id}/>}
+
       <div className='card-header'>
       <Profile con='container2'
           img= {feed.posts.user.avatar}
@@ -90,9 +93,12 @@ const Main = ({ feed}) => {
          color: '#fc4850', marginRight: 10 }}/>):
         ( <FiHeart onClick={togglelike} size={18} style={{ cursor: 'pointer',marginRight: 10 }}/>)}
 
-        <Link to={`/post/${postid}`}>
-          <FaComment size={18} style={{cursor:'pointer', color: 'black' }} />
-        </Link>
+        {/* <Link to={`/post/${postid}`}> */}
+          <FaComment size={18} style={{cursor:'pointer', color: 'black', }}
+          onClick={() => setModalopen(true)}  />
+        {/* </Link> */}
+       
+      
         </div>
           
            <div className='card-details'>
@@ -100,7 +106,7 @@ const Main = ({ feed}) => {
                 {feed.posts.user.username}
               {/* <span>{feed.posts.post}</span> */}
                  </div>
-                 <Link to={`/post/${postid}`}
+                 {/* <Link to={`/post/${postid}`}
           style={{
             fontWeight: 'bold',
             textDecoration: 'none',
@@ -108,9 +114,19 @@ const Main = ({ feed}) => {
             marginTop: '10px',
             display: 'block',
           }}
-        >
-          More details..
-        </Link>
+        > */}
+          <span 
+            style={{
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              color: '#999',
+              marginTop: '10px',
+              display: 'block',
+              cursor: 'pointer'
+            }} 
+            onClick={() => setModalopen(true)} >More details..</span>
+           
+        {/* </Link> */}
                  </div>  
 
               <p
@@ -119,11 +135,12 @@ const Main = ({ feed}) => {
                   setShow(true);
                 }}
               >
-                <Link to={`/post/${postid}`}>
-                View all comments
-                </Link>
+                {/* <Link to={`/post/${postid}`}> */}
+               <span   onClick={() => setModalopen(true)} 
+               >View all comments</span> 
+                {/* </Link> */}
               </p>
-              <CommentsList comments={comments} show={show}/>
+              {/* <CommentsList comments={comments} show={show}/> */}
          </div>
            <div className='card-comments'>
          <form onSubmit={handleSubmit}>
@@ -146,6 +163,7 @@ const Main = ({ feed}) => {
 
         </div>
        </div>
+         
     </div>
  </>        
   )

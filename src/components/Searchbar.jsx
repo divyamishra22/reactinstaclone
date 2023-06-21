@@ -2,8 +2,9 @@
 import React,{useState} from 'react';
 import Profile from './Profile';
 import './Searchbar.css'
+import { BsXLg } from "react-icons/bs";
 
-const Searchbar = () => {
+const Searchbar = ({setModalOpen}) => {
     const [term, setTerm] = useState('');
      const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -47,6 +48,9 @@ const Searchbar = () => {
   return (
     <div className='searchclass'>
 
+<div className='icon' style={{textAlign: 'right', marginRight:'8px', }}>
+       <BsXLg  style={{cursor:'pointer'}}  onClick={() => setModalOpen(false)}/>
+       </div>
         <div className='searchinput'>
         <input type="text" name="searchtext" id="searchtext" value={term} placeholder='Search by Username..Name'
            onChange={(e) => { setTerm(e.target.value) }}/>
