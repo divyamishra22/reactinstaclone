@@ -13,7 +13,7 @@ const Modal = ({isAuthor, post,
     // const [isOpen, setisOpen] = useState(false);
   const { handlefollow , removeFollow} = useFollow();
   const {DeletePost} = useFeed();
-
+  const [modalopen, setModalopen] = useState(false);
 
 
   const toggleModal = useCallback(() => {
@@ -53,10 +53,11 @@ const   UnfollowUser = useCallback(()=>{
         <div className='centered'>
         <div className="modal">
           {isAuthor? (<div className="modalHeader">
-          <li>
-              <Link to={`/post/${post.id}`}>
+          <li  onClick={() => setModalopen(true)} >
+              {/* <Link to={`/post/${post.id}`}> */}
                 Go to Publication
-                </Link>
+                {/* </Link> */}
+                { modalopen && <Post setModalopen={setModalopen} postId={post.id}/>}
             </li>
             <li className="red" 
             onClick={()=>deletePost()}
