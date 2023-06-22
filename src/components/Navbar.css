@@ -29,7 +29,7 @@
     @media (max-width: 640px) {
        flex-direction: row;
        margin-bottom: 0px;
-       border: 1px solid black;
+       /* border: 1px solid black; */
       
     }
 }
