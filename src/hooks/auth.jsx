@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
 
   const SignIn = async ({ email, password }) => {
     try {
-      const res = await api.post("http://localhost:3000/auth/login",{password: password, email:email,})
+      const res = await api.post("http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/auth/login",{password: password, email:email,})
       console.log(res.data);
       localStorage.setItem("jwt", res.data)
   const user = await api.get('/user/auth/me',{

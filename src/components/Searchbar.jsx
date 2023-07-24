@@ -24,7 +24,7 @@ const Searchbar = ({setModalOpen}) => {
         try{
           if (term) {
             setLoading(true);
-            fetch(`http://localhost:3000/user/search/${term}`, {
+            fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/user/search/${term}`, {
             method: "get",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("jwt"),

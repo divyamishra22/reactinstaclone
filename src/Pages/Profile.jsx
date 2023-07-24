@@ -30,7 +30,7 @@ const Profile = () => {
       async function getProfile() {
         // const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`);
         // console.log(res.data);
-        fetch(`http://localhost:3000/user/viewprofile/${username}`, {
+        fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/user/viewprofile/${username}`, {
           method: "get",
           headers: {
             // "Content-Type": "application/json",

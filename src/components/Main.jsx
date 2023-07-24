@@ -25,7 +25,7 @@ const Main = ({ feed}) => {
 
   const togglelike = useCallback( 
     ()=>{
-    fetch(`http://localhost:3000/like/${postid}`, {
+    fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/like/${postid}`, {
           method: "put",
           headers: {
             // "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Main = ({ feed}) => {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      const res = await api.post(`http://localhost:3000/comments/${postid}`, { body: comment },
+      const res = await api.post(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/comments/${postid}`, { body: comment },
       {
         headers:{
           "Authorization": "Bearer " + localStorage.getItem("jwt")   

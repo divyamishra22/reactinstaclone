@@ -43,7 +43,7 @@ const SignIn = () => {
       
       <div className="loginform2" >
           <p>Don't have an account ?
-          <Link to="/signup">
+          <Link to="/">
             Sign Up
           </Link>
           </p>

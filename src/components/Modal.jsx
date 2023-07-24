@@ -4,6 +4,7 @@ import { FiMoreHorizontal } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 import { useFeed } from '../hooks/feed';
 import './Modal.css'
+import Post from '../Pages/Post'
 
 
 const Modal = ({isAuthor, post,
@@ -67,8 +68,9 @@ const   UnfollowUser = useCallback(()=>{
             <li  onClick={toggleModal}>Cancel</li>
           </div>):(
           <div className="modalHeader">
-          <li>
-              <Link to={`/post/${post.id}`}>Go to Publication</Link>
+          <li  onClick={() => setModalopen(true)}>
+             Go to Publication
+             { modalopen && <Post setModalopen={setModalopen} postId={post.id}/>}
             </li>
             <li className="red" 
             onClick={()=>UnfollowUser()}
