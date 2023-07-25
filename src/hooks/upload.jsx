@@ -13,7 +13,7 @@ export function UploadProvider({ children }) {
 
   const updatepic = (url) => {
     // saving post to mongodb
-    fetch("http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/user/avatar", {
+    fetch("/api/user/avatar", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export function UploadProvider({ children }) {
 
   const removeprofile = ()=>{
     
-    fetch("http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/user/avatar", {
+    fetch("/api/user/avatar", {
       method: "delete",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

@@ -15,7 +15,7 @@ const Post = ({setModalopen, postId}) => {
 
   useEffect(() => {
     async function getPost() {
-      const res = await api.get(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/posts/${postId}`,
+      const res = await api.get(`/api/posts/${postId}`,
       {
         headers:{
           "Authorization": "Bearer " + localStorage.getItem("jwt")   

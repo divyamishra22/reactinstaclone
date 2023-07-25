@@ -7,7 +7,7 @@ export function FeedProvider({ children }) {
   const [feed, setFeed] = useState([]);
 
   async function getfeed() {
-    fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/feed`, {
+    fetch(`/api/feed`, {
       method: "get",
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt"),
@@ -24,7 +24,7 @@ export function FeedProvider({ children }) {
 
 
   async function DeletePost(postid){
-    fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/posts/${postid}`, {
+    fetch(`/api/posts/${postid}`, {
           method: "delete",
           headers: {
             "Authorization": "Bearer " + localStorage.getItem("jwt")

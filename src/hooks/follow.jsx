@@ -9,7 +9,7 @@ export function FollowProvider({ children }) {
 
 
     async function getFollows() {
-        fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/follow`,
+        fetch(`/api/follow`,
         {
             method: "get",
             headers: {
@@ -27,7 +27,7 @@ export function FollowProvider({ children }) {
 
 
 async function handlefollow(userId){
-  fetch(`http://ec2-16-171-137-234.eu-north-1.compute.amazonaws.com:3000/follow/${userId}`, {
+  fetch(`/api/follow/${userId}`, {
         method: "put",
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("jwt"),
