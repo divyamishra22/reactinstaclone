@@ -25,7 +25,7 @@ const Main = ({ feed}) => {
 
   const togglelike = useCallback( 
     ()=>{
-    fetch(`/api/like/${postid}`, {
+    fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/like/${postid}`, {
           method: "put",
           headers: {
             // "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Main = ({ feed}) => {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      const res = await api.post(`/api/comments/${postid}`, { body: comment },
+      const res = await api.post(`https://brilliant-speculoos-06b7a9.netlify.app/api/comments/${postid}`, { body: comment },
       {
         headers:{
           "Authorization": "Bearer " + localStorage.getItem("jwt")   

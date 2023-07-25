@@ -18,7 +18,7 @@ const CreatePost = () => {
     // saving post to mongodb
     if (url ) {
 
-      fetch("/api/posts/upload", {
+      fetch("https://brilliant-speculoos-06b7a9.netlify.app/api/posts/upload", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

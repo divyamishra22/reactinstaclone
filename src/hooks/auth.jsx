@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
 
   const SignIn = async ({ email, password }) => {
     try {
-      const res = await api.post("/api/auth/login",{password: password, email:email,})
+      const res = await api.post("https://brilliant-speculoos-06b7a9.netlify.app/api/auth/login",{password: password, email:email,})
       console.log(res.data);
       localStorage.setItem("jwt", res.data)
   const user = await api.get('/user/auth/me',{
@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
     const editUser = async({password, name, email,username,bio})=> {
       
       console.log(name);
-    const res = await api.post('/api/user/update', {
+    const res = await api.post('https://brilliant-speculoos-06b7a9.netlify.app/api/user/update', {
       password,
       name,
       email,

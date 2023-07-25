@@ -24,7 +24,7 @@ const Searchbar = ({setModalOpen}) => {
         try{
           if (term) {
             setLoading(true);
-            fetch(`/api/user/search/${term}`, {
+            fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/user/search/${term}`, {
             method: "get",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("jwt"),

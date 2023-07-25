@@ -15,7 +15,7 @@ const Post = ({setModalopen, postId}) => {
 
   useEffect(() => {
     async function getPost() {
-      const res = await api.get(`/api/posts/${postId}`,
+      const res = await api.get(`https://brilliant-speculoos-06b7a9.netlify.app/api/posts/${postId}`,
       {
         headers:{
           "Authorization": "Bearer " + localStorage.getItem("jwt")   

@@ -9,7 +9,7 @@ export function FollowProvider({ children }) {
 
 
     async function getFollows() {
-        fetch(`/api/follow`,
+        fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/follow`,
         {
             method: "get",
             headers: {
@@ -27,7 +27,7 @@ export function FollowProvider({ children }) {
 
 
 async function handlefollow(userId){
-  fetch(`/api/follow/${userId}`, {
+  fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/follow/${userId}`, {
         method: "put",
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("jwt"),

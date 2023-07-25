@@ -13,7 +13,7 @@ export function UploadProvider({ children }) {
 
   const updatepic = (url) => {
     // saving post to mongodb
-    fetch("/api/user/avatar", {
+    fetch("https://brilliant-speculoos-06b7a9.netlify.app/api/user/avatar", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export function UploadProvider({ children }) {
 
   const removeprofile = ()=>{
     
-    fetch("/api/user/avatar", {
+    fetch("https://brilliant-speculoos-06b7a9.netlify.app/api/user/avatar", {
       method: "delete",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

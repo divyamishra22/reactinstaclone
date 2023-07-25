@@ -30,7 +30,7 @@ const Profile = () => {
       async function getProfile() {
         // const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`);
         // console.log(res.data);
-        fetch(`/api/user/viewprofile/${username}`, {
+        fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/user/viewprofile/${username}`, {
           method: "get",
           headers: {
             // "Content-Type": "application/json",
