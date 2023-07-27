@@ -9,7 +9,7 @@ export function FollowProvider({ children }) {
 
 
     async function getFollows() {
-        fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/follow`,
+        fetch(`https://instafinal-hdic.onrender.com/follow`,
         {
             method: "get",
             headers: {
@@ -27,7 +27,7 @@ export function FollowProvider({ children }) {
 
 
 async function handlefollow(userId){
-  fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/follow/${userId}`, {
+  fetch(`https://instafinal-hdic.onrender.com/follow/${userId}`, {
         method: "put",
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("jwt"),

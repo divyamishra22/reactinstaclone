@@ -36,7 +36,7 @@ const SignUp = () => {
   
   const getMyPostData = async () => {
     try {
-      const res = await axios.post("https://brilliant-speculoos-06b7a9.netlify.app/api/user/signup",{
+      const res = await axios.post("https://instafinal-hdic.onrender.com/user/signup",{
         password: password,
         email:email,
         username: username,

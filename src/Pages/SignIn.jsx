@@ -18,8 +18,11 @@ const SignIn = () => {
         alert("Email or Password cannot be blank");
     }
     else {
-        SignIn({email, password})
-        navigate("/Home")
+      const userlogin=   SignIn({email, password})
+      if(userlogin)
+       { navigate("/Home")}
+       else
+       navigate("/")
     }
     setemail('');
     setpassword('');

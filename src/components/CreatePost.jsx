@@ -18,7 +18,7 @@ const CreatePost = () => {
     // saving post to mongodb
     if (url ) {
 
-      fetch("https://brilliant-speculoos-06b7a9.netlify.app/api/posts/upload", {
+      fetch("https://instafinal-hdic.onrender.com/posts/upload", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

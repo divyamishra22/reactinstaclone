@@ -26,10 +26,10 @@ export function AuthProvider({ children }) {
 
   const SignIn = async ({ email, password }) => {
     try {
-      const res = await api.post("https://brilliant-speculoos-06b7a9.netlify.app/api/auth/login",{password: password, email:email,})
+      const res = await api.post("https://instafinal-hdic.onrender.com/auth/login",{password: password, email:email,})
       console.log(res.data);
       localStorage.setItem("jwt", res.data)
-  const user = await api.get('/user/auth/me',{
+  const user = await api.get('https://instafinal-hdic.onrender.com/user/auth/me',{
     headers:{
       "Authorization": "Bearer " + localStorage.getItem("jwt")   
     }
@@ -39,6 +39,7 @@ export function AuthProvider({ children }) {
   setData({
     user: user.data,
   });
+  return user.data;
     } catch (error) {
       setIsError(error);
     }
@@ -49,7 +50,7 @@ export function AuthProvider({ children }) {
     const editUser = async({password, name, email,username,bio})=> {
       
       console.log(name);
-    const res = await api.post('https://brilliant-speculoos-06b7a9.netlify.app/api/user/update', {
+    const res = await api.post('https://instafinal-hdic.onrender.com/user/update', {
       password,
       name,
       email,

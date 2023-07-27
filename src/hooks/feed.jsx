@@ -7,7 +7,7 @@ export function FeedProvider({ children }) {
   const [feed, setFeed] = useState([]);
 
   async function getfeed() {
-    fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/feed`, {
+    fetch(`https://instafinal-hdic.onrender.com/feed`, {
       method: "get",
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt"),
@@ -24,7 +24,7 @@ export function FeedProvider({ children }) {
 
 
   async function DeletePost(postid){
-    fetch(`https://brilliant-speculoos-06b7a9.netlify.app/api/posts/${postid}`, {
+    fetch(`https://instafinal-hdic.onrender.com/posts/${postid}`, {
           method: "delete",
           headers: {
             "Authorization": "Bearer " + localStorage.getItem("jwt")
