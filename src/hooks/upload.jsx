@@ -13,7 +13,7 @@ export function UploadProvider({ children }) {
 
   const updatepic = (url) => {
     // saving post to mongodb
-    fetch("https://instafinal-hdic.onrender.com/user/avatar", {
+    fetch("https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/user/avatar", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ export function UploadProvider({ children }) {
 
   const removeprofile = ()=>{
     
-    fetch("https://instafinal-hdic.onrender.com/user/avatar", {
+    fetch("https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/user/avatar", {
       method: "delete",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),

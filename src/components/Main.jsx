@@ -25,7 +25,7 @@ const Main = ({ feed}) => {
 
   const togglelike = useCallback( 
     ()=>{
-    fetch(`https://instafinal-hdic.onrender.com//like/${postid}`, {
+    fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/like/${postid}`, {
           method: "put",
           headers: {
             // "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Main = ({ feed}) => {
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      const res = await api.post(`https://instafinal-hdic.onrender.com//comments/${postid}`, { body: comment },
+      const res = await api.post(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/comments/${postid}`, { body: comment },
       {
         headers:{
           "Authorization": "Bearer " + localStorage.getItem("jwt")   

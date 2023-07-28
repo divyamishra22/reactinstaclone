@@ -7,7 +7,7 @@ export function FeedProvider({ children }) {
   const [feed, setFeed] = useState([]);
 
   async function getfeed() {
-    fetch(`https://instafinal-hdic.onrender.com/feed`, {
+    fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/feed`, {
       method: "get",
       headers: {
         "Authorization": "Bearer " + localStorage.getItem("jwt"),
@@ -24,7 +24,7 @@ export function FeedProvider({ children }) {
 
 
   async function DeletePost(postid){
-    fetch(`https://instafinal-hdic.onrender.com/posts/${postid}`, {
+    fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/posts/${postid}`, {
           method: "delete",
           headers: {
             "Authorization": "Bearer " + localStorage.getItem("jwt")

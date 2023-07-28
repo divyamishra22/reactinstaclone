@@ -18,7 +18,7 @@ const CreatePost = () => {
     // saving post to mongodb
     if (url ) {
 
-      fetch("https://instafinal-hdic.onrender.com/posts/upload", {
+      fetch("https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/posts/upload", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

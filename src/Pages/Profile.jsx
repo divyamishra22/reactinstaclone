@@ -30,7 +30,7 @@ const Profile = () => {
       async function getProfile() {
         // const res = await api.get(`http://localhost:3000/user/viewprofile/${username}`);
         // console.log(res.data);
-        fetch(`https://instafinal-hdic.onrender.com/user/viewprofile/${username}`, {
+        fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/user/viewprofile/${username}`, {
           method: "get",
           headers: {
             // "Content-Type": "application/json",

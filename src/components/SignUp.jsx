@@ -36,7 +36,7 @@ const SignUp = () => {
   
   const getMyPostData = async () => {
     try {
-      const res = await axios.post("https://instafinal-hdic.onrender.com/user/signup",{
+      const res = await axios.post("https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/user/signup",{
         password: password,
         email:email,
         username: username,

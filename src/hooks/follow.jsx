@@ -9,7 +9,7 @@ export function FollowProvider({ children }) {
 
 
     async function getFollows() {
-        fetch(`https://instafinal-hdic.onrender.com/follow`,
+        fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/follow`,
         {
             method: "get",
             headers: {
@@ -27,7 +27,7 @@ export function FollowProvider({ children }) {
 
 
 async function handlefollow(userId){
-  fetch(`https://instafinal-hdic.onrender.com/follow/${userId}`, {
+  fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/follow/${userId}`, {
         method: "put",
         headers: {
           "Authorization": "Bearer " + localStorage.getItem("jwt"),

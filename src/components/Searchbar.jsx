@@ -24,7 +24,7 @@ const Searchbar = ({setModalOpen}) => {
         try{
           if (term) {
             setLoading(true);
-            fetch(`https://instafinal-hdic.onrender.com//user/search/${term}`, {
+            fetch(`https://9p3apmrmqc.execute-api.eu-north-1.amazonaws.com/user/search/${term}`, {
             method: "get",
             headers: {
               Authorization: "Bearer " + localStorage.getItem("jwt"),
